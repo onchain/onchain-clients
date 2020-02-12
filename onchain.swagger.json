@@ -1,0 +1,353 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "OnChain Crypto Currency API",
+    "description": "We need to add a proper description.",
+    "version": "1.0",
+    "contact": {
+      "name": "onchain.io",
+      "url": "https://onchain.io",
+      "email": "support@onchain.io"
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/address/balance/{coin_type}/{address}": {
+      "get": {
+        "summary": "Get Balance",
+        "description": "Returns the satoshi balance, usd balance and user viewable balance for an address. For ERC20 tokens you need to pass in the contract ID and the number of decimal places.",
+        "operationId": "GetBalance",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/onchainBalanceReply"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "coin_type",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "BITCOIN",
+              "ETHEREUM",
+              "TESTNET3",
+              "BITCOIN_CASH",
+              "BITCOIN_GOLD",
+              "LITECOIN",
+              "DASH",
+              "DOGE",
+              "BITCOIN_PRIVATE",
+              "ZCASH",
+              "ZCASH_TESTNET",
+              "ZCLASSIC"
+            ]
+          },
+          {
+            "name": "address",
+            "description": "The public address to lookup",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Address"
+        ]
+      }
+    },
+    "/api/address/{coin_type}/{public_key}": {
+      "get": {
+        "operationId": "GetNetworkAddress",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/onchainAddressReply"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "coin_type",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "BITCOIN",
+              "ETHEREUM",
+              "TESTNET3",
+              "BITCOIN_CASH",
+              "BITCOIN_GOLD",
+              "LITECOIN",
+              "DASH",
+              "DOGE",
+              "BITCOIN_PRIVATE",
+              "ZCASH",
+              "ZCASH_TESTNET",
+              "ZCLASSIC"
+            ]
+          },
+          {
+            "name": "public_key",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "byte"
+          }
+        ],
+        "tags": [
+          "Address"
+        ]
+      }
+    },
+    "/api/transaction/create/{coin_type}": {
+      "post": {
+        "operationId": "CreateTransaction",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/onchainTransactionReply"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "coin_type",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "BITCOIN",
+              "ETHEREUM",
+              "TESTNET3",
+              "BITCOIN_CASH",
+              "BITCOIN_GOLD",
+              "LITECOIN",
+              "DASH",
+              "DOGE",
+              "BITCOIN_PRIVATE",
+              "ZCASH",
+              "ZCASH_TESTNET",
+              "ZCLASSIC"
+            ]
+          }
+        ],
+        "tags": [
+          "Transaction"
+        ]
+      }
+    },
+    "/api/transaction/send_raw/{coin_type}": {
+      "post": {
+        "operationId": "SendRaw",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/onchainTransactionSendReply"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "coin_type",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "BITCOIN",
+              "ETHEREUM",
+              "TESTNET3",
+              "BITCOIN_CASH",
+              "BITCOIN_GOLD",
+              "LITECOIN",
+              "DASH",
+              "DOGE",
+              "BITCOIN_PRIVATE",
+              "ZCASH",
+              "ZCASH_TESTNET",
+              "ZCLASSIC"
+            ]
+          }
+        ],
+        "tags": [
+          "Transaction"
+        ]
+      }
+    },
+    "/api/transaction/sign_and_send/{coin_type}": {
+      "post": {
+        "operationId": "SignAndSend",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/onchainTransactionSendReply"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "coin_type",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "BITCOIN",
+              "ETHEREUM",
+              "TESTNET3",
+              "BITCOIN_CASH",
+              "BITCOIN_GOLD",
+              "LITECOIN",
+              "DASH",
+              "DOGE",
+              "BITCOIN_PRIVATE",
+              "ZCASH",
+              "ZCASH_TESTNET",
+              "ZCLASSIC"
+            ]
+          }
+        ],
+        "tags": [
+          "Transaction"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "onchainAddressReply": {
+      "type": "object",
+      "properties": {
+        "network_address": {
+          "type": "string"
+        }
+      }
+    },
+    "onchainBalanceReply": {
+      "type": "object",
+      "properties": {
+        "usd_balance": {
+          "type": "number",
+          "format": "float"
+        },
+        "balance": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "unconfirmed_balance": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "human_balance": {
+          "type": "number",
+          "format": "double"
+        },
+        "human_unconfirmed_balance": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "onchainBalancesReply": {
+      "type": "object",
+      "properties": {
+        "balances": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/onchainBalanceReply"
+          }
+        }
+      }
+    },
+    "onchainCoinType": {
+      "type": "string",
+      "enum": [
+        "BITCOIN",
+        "ETHEREUM",
+        "TESTNET3",
+        "BITCOIN_CASH",
+        "BITCOIN_GOLD",
+        "LITECOIN",
+        "DASH",
+        "DOGE",
+        "BITCOIN_PRIVATE",
+        "ZCASH",
+        "ZCASH_TESTNET",
+        "ZCLASSIC"
+      ],
+      "default": "BITCOIN"
+    },
+    "onchainEthereumTransactionReply": {
+      "type": "object",
+      "properties": {
+        "tx": {
+          "type": "string",
+          "format": "byte"
+        },
+        "to_sign": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "onchainHashToSign": {
+      "type": "object",
+      "properties": {
+        "input_index": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "public_key": {
+          "type": "string",
+          "format": "byte"
+        },
+        "hash_to_sign": {
+          "type": "string",
+          "format": "byte"
+        },
+        "signature": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "onchainTransactionReply": {
+      "type": "object",
+      "properties": {
+        "tx": {
+          "type": "string",
+          "format": "byte"
+        },
+        "total_input_value": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "hashes_to_sign": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/onchainHashToSign"
+          }
+        }
+      }
+    },
+    "onchainTransactionSendReply": {
+      "type": "object",
+      "properties": {
+        "tx_hash": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    }
+  }
+}
