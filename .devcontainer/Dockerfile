@@ -1,4 +1,4 @@
-FROM debian:buster-slim
+FROM openjdk:13.0-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
