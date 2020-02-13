@@ -93,8 +93,11 @@ Class | Method | HTTP request | Description
  - [SwaggerClient::OnchainCoinType](docs/OnchainCoinType.md)
  - [SwaggerClient::OnchainEthereumTransactionReply](docs/OnchainEthereumTransactionReply.md)
  - [SwaggerClient::OnchainHashToSign](docs/OnchainHashToSign.md)
+ - [SwaggerClient::OnchainRawTransactionSendRequest](docs/OnchainRawTransactionSendRequest.md)
  - [SwaggerClient::OnchainTransactionReply](docs/OnchainTransactionReply.md)
+ - [SwaggerClient::OnchainTransactionRequest](docs/OnchainTransactionRequest.md)
  - [SwaggerClient::OnchainTransactionSendReply](docs/OnchainTransactionSendReply.md)
+ - [SwaggerClient::OnchainTransactionSendRequest](docs/OnchainTransactionSendRequest.md)
 
 
 ## Documentation for Authorization

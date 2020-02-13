@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **create_transaction**
-> OnchainTransactionReply create_transaction(coin_type)
+> OnchainTransactionReply create_transaction(coin_type, body)
 
 
 
@@ -23,9 +23,11 @@ api_instance = SwaggerClient::TransactionApi.new
 
 coin_type = 'coin_type_example' # String | 
 
+body = SwaggerClient::OnchainTransactionRequest.new # OnchainTransactionRequest | 
+
 
 begin
-  result = api_instance.create_transaction(coin_type)
+  result = api_instance.create_transaction(coin_type, body)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling TransactionApi->create_transaction: #{e}"
@@ -37,6 +39,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coin_type** | **String**|  | 
+ **body** | [**OnchainTransactionRequest**](OnchainTransactionRequest.md)|  | 
 
 ### Return type
 
@@ -54,7 +57,7 @@ No authorization required
 
 
 # **send_raw**
-> OnchainTransactionSendReply send_raw(coin_type)
+> OnchainTransactionSendReply send_raw(coin_type, body)
 
 
 
@@ -67,9 +70,11 @@ api_instance = SwaggerClient::TransactionApi.new
 
 coin_type = 'coin_type_example' # String | 
 
+body = SwaggerClient::OnchainRawTransactionSendRequest.new # OnchainRawTransactionSendRequest | 
+
 
 begin
-  result = api_instance.send_raw(coin_type)
+  result = api_instance.send_raw(coin_type, body)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling TransactionApi->send_raw: #{e}"
@@ -81,6 +86,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coin_type** | **String**|  | 
+ **body** | [**OnchainRawTransactionSendRequest**](OnchainRawTransactionSendRequest.md)|  | 
 
 ### Return type
 
@@ -98,7 +104,7 @@ No authorization required
 
 
 # **sign_and_send**
-> OnchainTransactionSendReply sign_and_send(coin_type)
+> OnchainTransactionSendReply sign_and_send(coin_type, body)
 
 
 
@@ -111,9 +117,11 @@ api_instance = SwaggerClient::TransactionApi.new
 
 coin_type = 'coin_type_example' # String | 
 
+body = SwaggerClient::OnchainTransactionSendRequest.new # OnchainTransactionSendRequest | 
+
 
 begin
-  result = api_instance.sign_and_send(coin_type)
+  result = api_instance.sign_and_send(coin_type, body)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling TransactionApi->sign_and_send: #{e}"
@@ -125,6 +133,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coin_type** | **String**|  | 
+ **body** | [**OnchainTransactionSendRequest**](OnchainTransactionSendRequest.md)|  | 
 
 ### Return type
 

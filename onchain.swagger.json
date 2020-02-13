@@ -140,6 +140,14 @@
               "ZCASH_TESTNET",
               "ZCLASSIC"
             ]
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/onchainTransactionRequest"
+            }
           }
         ],
         "tags": [
@@ -178,6 +186,14 @@
               "ZCASH_TESTNET",
               "ZCLASSIC"
             ]
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/onchainRawTransactionSendRequest"
+            }
           }
         ],
         "tags": [
@@ -216,6 +232,14 @@
               "ZCASH_TESTNET",
               "ZCLASSIC"
             ]
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/onchainTransactionSendRequest"
+            }
           }
         ],
         "tags": [
@@ -321,6 +345,18 @@
         }
       }
     },
+    "onchainRawTransactionSendRequest": {
+      "type": "object",
+      "properties": {
+        "coin_type": {
+          "$ref": "#/definitions/onchainCoinType"
+        },
+        "tx": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
     "onchainTransactionReply": {
       "type": "object",
       "properties": {
@@ -340,12 +376,65 @@
         }
       }
     },
+    "onchainTransactionRequest": {
+      "type": "object",
+      "properties": {
+        "coin_type": {
+          "$ref": "#/definitions/onchainCoinType"
+        },
+        "to": {
+          "type": "string",
+          "title": "To address as a string in the network format. e.g. 1QJVDzdqb1VpbDK7uDeyVXy9mR27CJiyhY"
+        },
+        "from": {
+          "type": "string",
+          "format": "byte",
+          "title": "The from address is supplied as the full public key that corresponds to\nthe ECDCA private key.\ne.g. 03df154ebfcf29d29cc10d5c2565018bce2d9edbab267c31d2caf44a63056cf99f"
+        },
+        "from_address": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "miners_fee": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "fee": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "fee_address": {
+          "type": "string"
+        }
+      }
+    },
     "onchainTransactionSendReply": {
       "type": "object",
       "properties": {
         "tx_hash": {
           "type": "string",
           "format": "byte"
+        }
+      }
+    },
+    "onchainTransactionSendRequest": {
+      "type": "object",
+      "properties": {
+        "coin_type": {
+          "$ref": "#/definitions/onchainCoinType"
+        },
+        "tx": {
+          "type": "string",
+          "format": "byte"
+        },
+        "signatures": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/onchainHashToSign"
+          }
         }
       }
     }

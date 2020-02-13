@@ -20,17 +20,19 @@ module SwaggerClient
       @api_client = api_client
     end
     # @param coin_type 
+    # @param body 
     # @param [Hash] opts the optional parameters
     # @return [OnchainTransactionReply]
-    def create_transaction(coin_type, opts = {})
-      data, _status_code, _headers = create_transaction_with_http_info(coin_type, opts)
+    def create_transaction(coin_type, body, opts = {})
+      data, _status_code, _headers = create_transaction_with_http_info(coin_type, body, opts)
       data
     end
 
     # @param coin_type 
+    # @param body 
     # @param [Hash] opts the optional parameters
     # @return [Array<(OnchainTransactionReply, Fixnum, Hash)>] OnchainTransactionReply data, response status code and response headers
-    def create_transaction_with_http_info(coin_type, opts = {})
+    def create_transaction_with_http_info(coin_type, body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: TransactionApi.create_transaction ...'
       end
@@ -41,6 +43,10 @@ module SwaggerClient
       # verify enum value
       if @api_client.config.client_side_validation && !['BITCOIN', 'ETHEREUM', 'TESTNET3', 'BITCOIN_CASH', 'BITCOIN_GOLD', 'LITECOIN', 'DASH', 'DOGE', 'BITCOIN_PRIVATE', 'ZCASH', 'ZCASH_TESTNET', 'ZCLASSIC'].include?(coin_type)
         fail ArgumentError, "invalid value for 'coin_type', must be one of BITCOIN, ETHEREUM, TESTNET3, BITCOIN_CASH, BITCOIN_GOLD, LITECOIN, DASH, DOGE, BITCOIN_PRIVATE, ZCASH, ZCASH_TESTNET, ZCLASSIC"
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling TransactionApi.create_transaction"
       end
       # resource path
       local_var_path = '/api/transaction/create/{coin_type}'.sub('{' + 'coin_type' + '}', coin_type.to_s)
@@ -59,7 +65,7 @@ module SwaggerClient
       form_params = {}
 
       # http body (model)
-      post_body = nil
+      post_body = @api_client.object_to_http_body(body)
       auth_names = []
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
@@ -74,17 +80,19 @@ module SwaggerClient
       return data, status_code, headers
     end
     # @param coin_type 
+    # @param body 
     # @param [Hash] opts the optional parameters
     # @return [OnchainTransactionSendReply]
-    def send_raw(coin_type, opts = {})
-      data, _status_code, _headers = send_raw_with_http_info(coin_type, opts)
+    def send_raw(coin_type, body, opts = {})
+      data, _status_code, _headers = send_raw_with_http_info(coin_type, body, opts)
       data
     end
 
     # @param coin_type 
+    # @param body 
     # @param [Hash] opts the optional parameters
     # @return [Array<(OnchainTransactionSendReply, Fixnum, Hash)>] OnchainTransactionSendReply data, response status code and response headers
-    def send_raw_with_http_info(coin_type, opts = {})
+    def send_raw_with_http_info(coin_type, body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: TransactionApi.send_raw ...'
       end
@@ -95,6 +103,10 @@ module SwaggerClient
       # verify enum value
       if @api_client.config.client_side_validation && !['BITCOIN', 'ETHEREUM', 'TESTNET3', 'BITCOIN_CASH', 'BITCOIN_GOLD', 'LITECOIN', 'DASH', 'DOGE', 'BITCOIN_PRIVATE', 'ZCASH', 'ZCASH_TESTNET', 'ZCLASSIC'].include?(coin_type)
         fail ArgumentError, "invalid value for 'coin_type', must be one of BITCOIN, ETHEREUM, TESTNET3, BITCOIN_CASH, BITCOIN_GOLD, LITECOIN, DASH, DOGE, BITCOIN_PRIVATE, ZCASH, ZCASH_TESTNET, ZCLASSIC"
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling TransactionApi.send_raw"
       end
       # resource path
       local_var_path = '/api/transaction/send_raw/{coin_type}'.sub('{' + 'coin_type' + '}', coin_type.to_s)
@@ -113,7 +125,7 @@ module SwaggerClient
       form_params = {}
 
       # http body (model)
-      post_body = nil
+      post_body = @api_client.object_to_http_body(body)
       auth_names = []
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
@@ -128,17 +140,19 @@ module SwaggerClient
       return data, status_code, headers
     end
     # @param coin_type 
+    # @param body 
     # @param [Hash] opts the optional parameters
     # @return [OnchainTransactionSendReply]
-    def sign_and_send(coin_type, opts = {})
-      data, _status_code, _headers = sign_and_send_with_http_info(coin_type, opts)
+    def sign_and_send(coin_type, body, opts = {})
+      data, _status_code, _headers = sign_and_send_with_http_info(coin_type, body, opts)
       data
     end
 
     # @param coin_type 
+    # @param body 
     # @param [Hash] opts the optional parameters
     # @return [Array<(OnchainTransactionSendReply, Fixnum, Hash)>] OnchainTransactionSendReply data, response status code and response headers
-    def sign_and_send_with_http_info(coin_type, opts = {})
+    def sign_and_send_with_http_info(coin_type, body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: TransactionApi.sign_and_send ...'
       end
@@ -149,6 +163,10 @@ module SwaggerClient
       # verify enum value
       if @api_client.config.client_side_validation && !['BITCOIN', 'ETHEREUM', 'TESTNET3', 'BITCOIN_CASH', 'BITCOIN_GOLD', 'LITECOIN', 'DASH', 'DOGE', 'BITCOIN_PRIVATE', 'ZCASH', 'ZCASH_TESTNET', 'ZCLASSIC'].include?(coin_type)
         fail ArgumentError, "invalid value for 'coin_type', must be one of BITCOIN, ETHEREUM, TESTNET3, BITCOIN_CASH, BITCOIN_GOLD, LITECOIN, DASH, DOGE, BITCOIN_PRIVATE, ZCASH, ZCASH_TESTNET, ZCLASSIC"
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling TransactionApi.sign_and_send"
       end
       # resource path
       local_var_path = '/api/transaction/sign_and_send/{coin_type}'.sub('{' + 'coin_type' + '}', coin_type.to_s)
@@ -167,7 +185,7 @@ module SwaggerClient
       form_params = {}
 
       # http body (model)
-      post_body = nil
+      post_body = @api_client.object_to_http_body(body)
       auth_names = []
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,

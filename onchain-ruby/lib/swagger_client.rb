@@ -23,8 +23,11 @@ require 'swagger_client/models/onchain_balances_reply'
 require 'swagger_client/models/onchain_coin_type'
 require 'swagger_client/models/onchain_ethereum_transaction_reply'
 require 'swagger_client/models/onchain_hash_to_sign'
+require 'swagger_client/models/onchain_raw_transaction_send_request'
 require 'swagger_client/models/onchain_transaction_reply'
+require 'swagger_client/models/onchain_transaction_request'
 require 'swagger_client/models/onchain_transaction_send_reply'
+require 'swagger_client/models/onchain_transaction_send_request'
 
 # APIs
 require 'swagger_client/api/address_api'
