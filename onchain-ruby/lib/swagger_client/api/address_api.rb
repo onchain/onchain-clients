@@ -25,8 +25,8 @@ module SwaggerClient
     # @param address The public address to lookup
     # @param [Hash] opts the optional parameters
     # @return [OnchainBalanceReply]
-    def get_balance(coin_type, address, opts = {})
-      data, _status_code, _headers = get_balance_with_http_info(coin_type, address, opts)
+    def address_get_balance(coin_type, address, opts = {})
+      data, _status_code, _headers = address_get_balance_with_http_info(coin_type, address, opts)
       data
     end
 
@@ -36,13 +36,13 @@ module SwaggerClient
     # @param address The public address to lookup
     # @param [Hash] opts the optional parameters
     # @return [Array<(OnchainBalanceReply, Fixnum, Hash)>] OnchainBalanceReply data, response status code and response headers
-    def get_balance_with_http_info(coin_type, address, opts = {})
+    def address_get_balance_with_http_info(coin_type, address, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: AddressApi.get_balance ...'
+        @api_client.config.logger.debug 'Calling API: AddressApi.address_get_balance ...'
       end
       # verify the required parameter 'coin_type' is set
       if @api_client.config.client_side_validation && coin_type.nil?
-        fail ArgumentError, "Missing the required parameter 'coin_type' when calling AddressApi.get_balance"
+        fail ArgumentError, "Missing the required parameter 'coin_type' when calling AddressApi.address_get_balance"
       end
       # verify enum value
       if @api_client.config.client_side_validation && !['BITCOIN', 'ETHEREUM', 'TESTNET3', 'BITCOIN_CASH', 'BITCOIN_GOLD', 'LITECOIN', 'DASH', 'DOGE', 'BITCOIN_PRIVATE', 'ZCASH', 'ZCASH_TESTNET', 'ZCLASSIC'].include?(coin_type)
@@ -50,7 +50,7 @@ module SwaggerClient
       end
       # verify the required parameter 'address' is set
       if @api_client.config.client_side_validation && address.nil?
-        fail ArgumentError, "Missing the required parameter 'address' when calling AddressApi.get_balance"
+        fail ArgumentError, "Missing the required parameter 'address' when calling AddressApi.address_get_balance"
       end
       # resource path
       local_var_path = '/api/address/balance/{coin_type}/{address}'.sub('{' + 'coin_type' + '}', coin_type.to_s).sub('{' + 'address' + '}', address.to_s)
@@ -79,7 +79,143 @@ module SwaggerClient
         :auth_names => auth_names,
         :return_type => 'OnchainBalanceReply')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: AddressApi#get_balance\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: AddressApi#address_get_balance\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get Balances
+    # Returns the satoshi balance, usd balance and user viewable balance for a set of addresses.
+    # @param coin_type 
+    # @param addresses 
+    # @param [Hash] opts the optional parameters
+    # @return [OnchainBalancesReply]
+    def address_get_balances(coin_type, addresses, opts = {})
+      data, _status_code, _headers = address_get_balances_with_http_info(coin_type, addresses, opts)
+      data
+    end
+
+    # Get Balances
+    # Returns the satoshi balance, usd balance and user viewable balance for a set of addresses.
+    # @param coin_type 
+    # @param addresses 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(OnchainBalancesReply, Fixnum, Hash)>] OnchainBalancesReply data, response status code and response headers
+    def address_get_balances_with_http_info(coin_type, addresses, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AddressApi.address_get_balances ...'
+      end
+      # verify the required parameter 'coin_type' is set
+      if @api_client.config.client_side_validation && coin_type.nil?
+        fail ArgumentError, "Missing the required parameter 'coin_type' when calling AddressApi.address_get_balances"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['BITCOIN', 'ETHEREUM', 'TESTNET3', 'BITCOIN_CASH', 'BITCOIN_GOLD', 'LITECOIN', 'DASH', 'DOGE', 'BITCOIN_PRIVATE', 'ZCASH', 'ZCASH_TESTNET', 'ZCLASSIC'].include?(coin_type)
+        fail ArgumentError, "invalid value for 'coin_type', must be one of BITCOIN, ETHEREUM, TESTNET3, BITCOIN_CASH, BITCOIN_GOLD, LITECOIN, DASH, DOGE, BITCOIN_PRIVATE, ZCASH, ZCASH_TESTNET, ZCLASSIC"
+      end
+      # verify the required parameter 'addresses' is set
+      if @api_client.config.client_side_validation && addresses.nil?
+        fail ArgumentError, "Missing the required parameter 'addresses' when calling AddressApi.address_get_balances"
+      end
+      if @api_client.config.client_side_validation && addresses.length < 1
+        fail ArgumentError, 'invalid value for "addresses" when calling AddressApi.address_get_balances, number of items must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/api/address/balances/{coin_type}/{addresses}'.sub('{' + 'coin_type' + '}', coin_type.to_s).sub('{' + 'addresses' + '}', addresses.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'OnchainBalancesReply')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AddressApi#address_get_balances\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get History
+    # Returns the transaction history for an address or addresses.
+    # @param coin_type 
+    # @param addresses 
+    # @param [Hash] opts the optional parameters
+    # @return [OnchainHistoryReply]
+    def address_get_history(coin_type, addresses, opts = {})
+      data, _status_code, _headers = address_get_history_with_http_info(coin_type, addresses, opts)
+      data
+    end
+
+    # Get History
+    # Returns the transaction history for an address or addresses.
+    # @param coin_type 
+    # @param addresses 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(OnchainHistoryReply, Fixnum, Hash)>] OnchainHistoryReply data, response status code and response headers
+    def address_get_history_with_http_info(coin_type, addresses, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AddressApi.address_get_history ...'
+      end
+      # verify the required parameter 'coin_type' is set
+      if @api_client.config.client_side_validation && coin_type.nil?
+        fail ArgumentError, "Missing the required parameter 'coin_type' when calling AddressApi.address_get_history"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['BITCOIN', 'ETHEREUM', 'TESTNET3', 'BITCOIN_CASH', 'BITCOIN_GOLD', 'LITECOIN', 'DASH', 'DOGE', 'BITCOIN_PRIVATE', 'ZCASH', 'ZCASH_TESTNET', 'ZCLASSIC'].include?(coin_type)
+        fail ArgumentError, "invalid value for 'coin_type', must be one of BITCOIN, ETHEREUM, TESTNET3, BITCOIN_CASH, BITCOIN_GOLD, LITECOIN, DASH, DOGE, BITCOIN_PRIVATE, ZCASH, ZCASH_TESTNET, ZCLASSIC"
+      end
+      # verify the required parameter 'addresses' is set
+      if @api_client.config.client_side_validation && addresses.nil?
+        fail ArgumentError, "Missing the required parameter 'addresses' when calling AddressApi.address_get_history"
+      end
+      if @api_client.config.client_side_validation && addresses.length < 1
+        fail ArgumentError, 'invalid value for "addresses" when calling AddressApi.address_get_history, number of items must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/api/address/history/{coin_type}/{addresses}'.sub('{' + 'coin_type' + '}', coin_type.to_s).sub('{' + 'addresses' + '}', addresses.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'OnchainHistoryReply')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AddressApi#address_get_history\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -87,8 +223,8 @@ module SwaggerClient
     # @param public_key 
     # @param [Hash] opts the optional parameters
     # @return [OnchainAddressReply]
-    def get_network_address(coin_type, public_key, opts = {})
-      data, _status_code, _headers = get_network_address_with_http_info(coin_type, public_key, opts)
+    def address_get_network_address(coin_type, public_key, opts = {})
+      data, _status_code, _headers = address_get_network_address_with_http_info(coin_type, public_key, opts)
       data
     end
 
@@ -96,13 +232,13 @@ module SwaggerClient
     # @param public_key 
     # @param [Hash] opts the optional parameters
     # @return [Array<(OnchainAddressReply, Fixnum, Hash)>] OnchainAddressReply data, response status code and response headers
-    def get_network_address_with_http_info(coin_type, public_key, opts = {})
+    def address_get_network_address_with_http_info(coin_type, public_key, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: AddressApi.get_network_address ...'
+        @api_client.config.logger.debug 'Calling API: AddressApi.address_get_network_address ...'
       end
       # verify the required parameter 'coin_type' is set
       if @api_client.config.client_side_validation && coin_type.nil?
-        fail ArgumentError, "Missing the required parameter 'coin_type' when calling AddressApi.get_network_address"
+        fail ArgumentError, "Missing the required parameter 'coin_type' when calling AddressApi.address_get_network_address"
       end
       # verify enum value
       if @api_client.config.client_side_validation && !['BITCOIN', 'ETHEREUM', 'TESTNET3', 'BITCOIN_CASH', 'BITCOIN_GOLD', 'LITECOIN', 'DASH', 'DOGE', 'BITCOIN_PRIVATE', 'ZCASH', 'ZCASH_TESTNET', 'ZCLASSIC'].include?(coin_type)
@@ -110,7 +246,7 @@ module SwaggerClient
       end
       # verify the required parameter 'public_key' is set
       if @api_client.config.client_side_validation && public_key.nil?
-        fail ArgumentError, "Missing the required parameter 'public_key' when calling AddressApi.get_network_address"
+        fail ArgumentError, "Missing the required parameter 'public_key' when calling AddressApi.address_get_network_address"
       end
       # resource path
       local_var_path = '/api/address/{coin_type}/{public_key}'.sub('{' + 'coin_type' + '}', coin_type.to_s).sub('{' + 'public_key' + '}', public_key.to_s)
@@ -139,7 +275,7 @@ module SwaggerClient
         :auth_names => auth_names,
         :return_type => 'OnchainAddressReply')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: AddressApi#get_network_address\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: AddressApi#address_get_network_address\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

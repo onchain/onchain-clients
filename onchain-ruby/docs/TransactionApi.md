@@ -4,13 +4,13 @@ All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_transaction**](TransactionApi.md#create_transaction) | **POST** /api/transaction/create/{coin_type} | 
-[**send_raw**](TransactionApi.md#send_raw) | **POST** /api/transaction/send_raw/{coin_type} | 
-[**sign_and_send**](TransactionApi.md#sign_and_send) | **POST** /api/transaction/sign_and_send/{coin_type} | 
+[**transaction_create_transaction**](TransactionApi.md#transaction_create_transaction) | **POST** /api/transaction/create/{coin_type} | 
+[**transaction_send_raw**](TransactionApi.md#transaction_send_raw) | **POST** /api/transaction/send_raw/{coin_type} | 
+[**transaction_sign_and_send**](TransactionApi.md#transaction_sign_and_send) | **POST** /api/transaction/sign_and_send/{coin_type} | 
 
 
-# **create_transaction**
-> OnchainTransactionReply create_transaction(coin_type, body)
+# **transaction_create_transaction**
+> OnchainTransactionReply transaction_create_transaction(coin_type, body)
 
 
 
@@ -27,10 +27,10 @@ body = SwaggerClient::OnchainTransactionRequest.new # OnchainTransactionRequest 
 
 
 begin
-  result = api_instance.create_transaction(coin_type, body)
+  result = api_instance.transaction_create_transaction(coin_type, body)
   p result
 rescue SwaggerClient::ApiError => e
-  puts "Exception when calling TransactionApi->create_transaction: #{e}"
+  puts "Exception when calling TransactionApi->transaction_create_transaction: #{e}"
 end
 ```
 
@@ -56,8 +56,8 @@ No authorization required
 
 
 
-# **send_raw**
-> OnchainTransactionSendReply send_raw(coin_type, body)
+# **transaction_send_raw**
+> OnchainTransactionSendReply transaction_send_raw(coin_type, body)
 
 
 
@@ -74,10 +74,10 @@ body = SwaggerClient::OnchainRawTransactionSendRequest.new # OnchainRawTransacti
 
 
 begin
-  result = api_instance.send_raw(coin_type, body)
+  result = api_instance.transaction_send_raw(coin_type, body)
   p result
 rescue SwaggerClient::ApiError => e
-  puts "Exception when calling TransactionApi->send_raw: #{e}"
+  puts "Exception when calling TransactionApi->transaction_send_raw: #{e}"
 end
 ```
 
@@ -103,8 +103,8 @@ No authorization required
 
 
 
-# **sign_and_send**
-> OnchainTransactionSendReply sign_and_send(coin_type, body)
+# **transaction_sign_and_send**
+> OnchainTransactionSendReply transaction_sign_and_send(coin_type, body)
 
 
 
@@ -121,10 +121,10 @@ body = SwaggerClient::OnchainTransactionSendRequest.new # OnchainTransactionSend
 
 
 begin
-  result = api_instance.sign_and_send(coin_type, body)
+  result = api_instance.transaction_sign_and_send(coin_type, body)
   p result
 rescue SwaggerClient::ApiError => e
-  puts "Exception when calling TransactionApi->sign_and_send: #{e}"
+  puts "Exception when calling TransactionApi->transaction_sign_and_send: #{e}"
 end
 ```
 

@@ -23,8 +23,8 @@ module SwaggerClient
     # @param body 
     # @param [Hash] opts the optional parameters
     # @return [OnchainTransactionReply]
-    def create_transaction(coin_type, body, opts = {})
-      data, _status_code, _headers = create_transaction_with_http_info(coin_type, body, opts)
+    def transaction_create_transaction(coin_type, body, opts = {})
+      data, _status_code, _headers = transaction_create_transaction_with_http_info(coin_type, body, opts)
       data
     end
 
@@ -32,13 +32,13 @@ module SwaggerClient
     # @param body 
     # @param [Hash] opts the optional parameters
     # @return [Array<(OnchainTransactionReply, Fixnum, Hash)>] OnchainTransactionReply data, response status code and response headers
-    def create_transaction_with_http_info(coin_type, body, opts = {})
+    def transaction_create_transaction_with_http_info(coin_type, body, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: TransactionApi.create_transaction ...'
+        @api_client.config.logger.debug 'Calling API: TransactionApi.transaction_create_transaction ...'
       end
       # verify the required parameter 'coin_type' is set
       if @api_client.config.client_side_validation && coin_type.nil?
-        fail ArgumentError, "Missing the required parameter 'coin_type' when calling TransactionApi.create_transaction"
+        fail ArgumentError, "Missing the required parameter 'coin_type' when calling TransactionApi.transaction_create_transaction"
       end
       # verify enum value
       if @api_client.config.client_side_validation && !['BITCOIN', 'ETHEREUM', 'TESTNET3', 'BITCOIN_CASH', 'BITCOIN_GOLD', 'LITECOIN', 'DASH', 'DOGE', 'BITCOIN_PRIVATE', 'ZCASH', 'ZCASH_TESTNET', 'ZCLASSIC'].include?(coin_type)
@@ -46,7 +46,7 @@ module SwaggerClient
       end
       # verify the required parameter 'body' is set
       if @api_client.config.client_side_validation && body.nil?
-        fail ArgumentError, "Missing the required parameter 'body' when calling TransactionApi.create_transaction"
+        fail ArgumentError, "Missing the required parameter 'body' when calling TransactionApi.transaction_create_transaction"
       end
       # resource path
       local_var_path = '/api/transaction/create/{coin_type}'.sub('{' + 'coin_type' + '}', coin_type.to_s)
@@ -75,7 +75,7 @@ module SwaggerClient
         :auth_names => auth_names,
         :return_type => 'OnchainTransactionReply')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: TransactionApi#create_transaction\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: TransactionApi#transaction_create_transaction\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -83,8 +83,8 @@ module SwaggerClient
     # @param body 
     # @param [Hash] opts the optional parameters
     # @return [OnchainTransactionSendReply]
-    def send_raw(coin_type, body, opts = {})
-      data, _status_code, _headers = send_raw_with_http_info(coin_type, body, opts)
+    def transaction_send_raw(coin_type, body, opts = {})
+      data, _status_code, _headers = transaction_send_raw_with_http_info(coin_type, body, opts)
       data
     end
 
@@ -92,13 +92,13 @@ module SwaggerClient
     # @param body 
     # @param [Hash] opts the optional parameters
     # @return [Array<(OnchainTransactionSendReply, Fixnum, Hash)>] OnchainTransactionSendReply data, response status code and response headers
-    def send_raw_with_http_info(coin_type, body, opts = {})
+    def transaction_send_raw_with_http_info(coin_type, body, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: TransactionApi.send_raw ...'
+        @api_client.config.logger.debug 'Calling API: TransactionApi.transaction_send_raw ...'
       end
       # verify the required parameter 'coin_type' is set
       if @api_client.config.client_side_validation && coin_type.nil?
-        fail ArgumentError, "Missing the required parameter 'coin_type' when calling TransactionApi.send_raw"
+        fail ArgumentError, "Missing the required parameter 'coin_type' when calling TransactionApi.transaction_send_raw"
       end
       # verify enum value
       if @api_client.config.client_side_validation && !['BITCOIN', 'ETHEREUM', 'TESTNET3', 'BITCOIN_CASH', 'BITCOIN_GOLD', 'LITECOIN', 'DASH', 'DOGE', 'BITCOIN_PRIVATE', 'ZCASH', 'ZCASH_TESTNET', 'ZCLASSIC'].include?(coin_type)
@@ -106,7 +106,7 @@ module SwaggerClient
       end
       # verify the required parameter 'body' is set
       if @api_client.config.client_side_validation && body.nil?
-        fail ArgumentError, "Missing the required parameter 'body' when calling TransactionApi.send_raw"
+        fail ArgumentError, "Missing the required parameter 'body' when calling TransactionApi.transaction_send_raw"
       end
       # resource path
       local_var_path = '/api/transaction/send_raw/{coin_type}'.sub('{' + 'coin_type' + '}', coin_type.to_s)
@@ -135,7 +135,7 @@ module SwaggerClient
         :auth_names => auth_names,
         :return_type => 'OnchainTransactionSendReply')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: TransactionApi#send_raw\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: TransactionApi#transaction_send_raw\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -143,8 +143,8 @@ module SwaggerClient
     # @param body 
     # @param [Hash] opts the optional parameters
     # @return [OnchainTransactionSendReply]
-    def sign_and_send(coin_type, body, opts = {})
-      data, _status_code, _headers = sign_and_send_with_http_info(coin_type, body, opts)
+    def transaction_sign_and_send(coin_type, body, opts = {})
+      data, _status_code, _headers = transaction_sign_and_send_with_http_info(coin_type, body, opts)
       data
     end
 
@@ -152,13 +152,13 @@ module SwaggerClient
     # @param body 
     # @param [Hash] opts the optional parameters
     # @return [Array<(OnchainTransactionSendReply, Fixnum, Hash)>] OnchainTransactionSendReply data, response status code and response headers
-    def sign_and_send_with_http_info(coin_type, body, opts = {})
+    def transaction_sign_and_send_with_http_info(coin_type, body, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: TransactionApi.sign_and_send ...'
+        @api_client.config.logger.debug 'Calling API: TransactionApi.transaction_sign_and_send ...'
       end
       # verify the required parameter 'coin_type' is set
       if @api_client.config.client_side_validation && coin_type.nil?
-        fail ArgumentError, "Missing the required parameter 'coin_type' when calling TransactionApi.sign_and_send"
+        fail ArgumentError, "Missing the required parameter 'coin_type' when calling TransactionApi.transaction_sign_and_send"
       end
       # verify enum value
       if @api_client.config.client_side_validation && !['BITCOIN', 'ETHEREUM', 'TESTNET3', 'BITCOIN_CASH', 'BITCOIN_GOLD', 'LITECOIN', 'DASH', 'DOGE', 'BITCOIN_PRIVATE', 'ZCASH', 'ZCASH_TESTNET', 'ZCLASSIC'].include?(coin_type)
@@ -166,7 +166,7 @@ module SwaggerClient
       end
       # verify the required parameter 'body' is set
       if @api_client.config.client_side_validation && body.nil?
-        fail ArgumentError, "Missing the required parameter 'body' when calling TransactionApi.sign_and_send"
+        fail ArgumentError, "Missing the required parameter 'body' when calling TransactionApi.transaction_sign_and_send"
       end
       # resource path
       local_var_path = '/api/transaction/sign_and_send/{coin_type}'.sub('{' + 'coin_type' + '}', coin_type.to_s)
@@ -195,7 +195,7 @@ module SwaggerClient
         :auth_names => auth_names,
         :return_type => 'OnchainTransactionSendReply')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: TransactionApi#sign_and_send\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: TransactionApi#transaction_sign_and_send\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

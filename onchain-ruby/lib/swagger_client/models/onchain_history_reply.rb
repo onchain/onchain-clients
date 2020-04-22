@@ -13,20 +13,24 @@ Swagger Codegen version: 2.4.13-SNAPSHOT
 require 'date'
 
 module SwaggerClient
-  class OnchainAddressReply
-    attr_accessor :network_address
+  class OnchainHistoryReply
+    attr_accessor :total_txs
+
+    attr_accessor :txs
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'network_address' => :'network_address'
+        :'total_txs' => :'total_txs',
+        :'txs' => :'txs'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'network_address' => :'String'
+        :'total_txs' => :'String',
+        :'txs' => :'Array<HistoryReplyTX>'
       }
     end
 
@@ -38,8 +42,14 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'network_address')
-        self.network_address = attributes[:'network_address']
+      if attributes.has_key?(:'total_txs')
+        self.total_txs = attributes[:'total_txs']
+      end
+
+      if attributes.has_key?(:'txs')
+        if (value = attributes[:'txs']).is_a?(Array)
+          self.txs = value
+        end
       end
     end
 
@@ -61,7 +71,8 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          network_address == o.network_address
+          total_txs == o.total_txs &&
+          txs == o.txs
     end
 
     # @see the `==` method
@@ -73,7 +84,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [network_address].hash
+      [total_txs, txs].hash
     end
 
     # Builds the object from hash

@@ -32,25 +32,51 @@ describe 'AddressApi' do
     end
   end
 
-  # unit tests for get_balance
+  # unit tests for address_get_balance
   # Get Balance
   # Returns the satoshi balance, usd balance and user viewable balance for an address. For ERC20 tokens you need to pass in the contract ID and the number of decimal places.
   # @param coin_type 
   # @param address The public address to lookup
   # @param [Hash] opts the optional parameters
   # @return [OnchainBalanceReply]
-  describe 'get_balance test' do
+  describe 'address_get_balance test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for get_network_address
+  # unit tests for address_get_balances
+  # Get Balances
+  # Returns the satoshi balance, usd balance and user viewable balance for a set of addresses.
+  # @param coin_type 
+  # @param addresses 
+  # @param [Hash] opts the optional parameters
+  # @return [OnchainBalancesReply]
+  describe 'address_get_balances test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for address_get_history
+  # Get History
+  # Returns the transaction history for an address or addresses.
+  # @param coin_type 
+  # @param addresses 
+  # @param [Hash] opts the optional parameters
+  # @return [OnchainHistoryReply]
+  describe 'address_get_history test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for address_get_network_address
   # @param coin_type 
   # @param public_key 
   # @param [Hash] opts the optional parameters
   # @return [OnchainAddressReply]
-  describe 'get_network_address test' do
+  describe 'address_get_network_address test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

@@ -17,17 +17,22 @@ require 'swagger_client/version'
 require 'swagger_client/configuration'
 
 # Models
+require 'swagger_client/models/history_reply_tx'
 require 'swagger_client/models/onchain_address_reply'
 require 'swagger_client/models/onchain_balance_reply'
 require 'swagger_client/models/onchain_balances_reply'
 require 'swagger_client/models/onchain_coin_type'
 require 'swagger_client/models/onchain_ethereum_transaction_reply'
 require 'swagger_client/models/onchain_hash_to_sign'
+require 'swagger_client/models/onchain_history_reply'
 require 'swagger_client/models/onchain_raw_transaction_send_request'
+require 'swagger_client/models/onchain_transaction_recipient'
 require 'swagger_client/models/onchain_transaction_reply'
 require 'swagger_client/models/onchain_transaction_request'
 require 'swagger_client/models/onchain_transaction_send_reply'
 require 'swagger_client/models/onchain_transaction_send_request'
+require 'swagger_client/models/protobuf_any'
+require 'swagger_client/models/runtime_error'
 
 # APIs
 require 'swagger_client/api/address_api'

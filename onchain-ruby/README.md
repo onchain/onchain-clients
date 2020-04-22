@@ -64,10 +64,10 @@ address = 'address_example' # String | The public address to lookup
 
 begin
   #Get Balance
-  result = api_instance.get_balance(coin_type, address)
+  result = api_instance.address_get_balance(coin_type, address)
   p result
 rescue SwaggerClient::ApiError => e
-  puts "Exception when calling AddressApi->get_balance: #{e}"
+  puts "Exception when calling AddressApi->address_get_balance: #{e}"
 end
 
 ```
@@ -78,26 +78,33 @@ All URIs are relative to *https://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*SwaggerClient::AddressApi* | [**get_balance**](docs/AddressApi.md#get_balance) | **GET** /api/address/balance/{coin_type}/{address} | Get Balance
-*SwaggerClient::AddressApi* | [**get_network_address**](docs/AddressApi.md#get_network_address) | **GET** /api/address/{coin_type}/{public_key} | 
-*SwaggerClient::TransactionApi* | [**create_transaction**](docs/TransactionApi.md#create_transaction) | **POST** /api/transaction/create/{coin_type} | 
-*SwaggerClient::TransactionApi* | [**send_raw**](docs/TransactionApi.md#send_raw) | **POST** /api/transaction/send_raw/{coin_type} | 
-*SwaggerClient::TransactionApi* | [**sign_and_send**](docs/TransactionApi.md#sign_and_send) | **POST** /api/transaction/sign_and_send/{coin_type} | 
+*SwaggerClient::AddressApi* | [**address_get_balance**](docs/AddressApi.md#address_get_balance) | **GET** /api/address/balance/{coin_type}/{address} | Get Balance
+*SwaggerClient::AddressApi* | [**address_get_balances**](docs/AddressApi.md#address_get_balances) | **GET** /api/address/balances/{coin_type}/{addresses} | Get Balances
+*SwaggerClient::AddressApi* | [**address_get_history**](docs/AddressApi.md#address_get_history) | **GET** /api/address/history/{coin_type}/{addresses} | Get History
+*SwaggerClient::AddressApi* | [**address_get_network_address**](docs/AddressApi.md#address_get_network_address) | **GET** /api/address/{coin_type}/{public_key} | 
+*SwaggerClient::TransactionApi* | [**transaction_create_transaction**](docs/TransactionApi.md#transaction_create_transaction) | **POST** /api/transaction/create/{coin_type} | 
+*SwaggerClient::TransactionApi* | [**transaction_send_raw**](docs/TransactionApi.md#transaction_send_raw) | **POST** /api/transaction/send_raw/{coin_type} | 
+*SwaggerClient::TransactionApi* | [**transaction_sign_and_send**](docs/TransactionApi.md#transaction_sign_and_send) | **POST** /api/transaction/sign_and_send/{coin_type} | 
 
 
 ## Documentation for Models
 
+ - [SwaggerClient::HistoryReplyTX](docs/HistoryReplyTX.md)
  - [SwaggerClient::OnchainAddressReply](docs/OnchainAddressReply.md)
  - [SwaggerClient::OnchainBalanceReply](docs/OnchainBalanceReply.md)
  - [SwaggerClient::OnchainBalancesReply](docs/OnchainBalancesReply.md)
  - [SwaggerClient::OnchainCoinType](docs/OnchainCoinType.md)
  - [SwaggerClient::OnchainEthereumTransactionReply](docs/OnchainEthereumTransactionReply.md)
  - [SwaggerClient::OnchainHashToSign](docs/OnchainHashToSign.md)
+ - [SwaggerClient::OnchainHistoryReply](docs/OnchainHistoryReply.md)
  - [SwaggerClient::OnchainRawTransactionSendRequest](docs/OnchainRawTransactionSendRequest.md)
+ - [SwaggerClient::OnchainTransactionRecipient](docs/OnchainTransactionRecipient.md)
  - [SwaggerClient::OnchainTransactionReply](docs/OnchainTransactionReply.md)
  - [SwaggerClient::OnchainTransactionRequest](docs/OnchainTransactionRequest.md)
  - [SwaggerClient::OnchainTransactionSendReply](docs/OnchainTransactionSendReply.md)
  - [SwaggerClient::OnchainTransactionSendRequest](docs/OnchainTransactionSendRequest.md)
+ - [SwaggerClient::ProtobufAny](docs/ProtobufAny.md)
+ - [SwaggerClient::RuntimeError](docs/RuntimeError.md)
 
 
 ## Documentation for Authorization

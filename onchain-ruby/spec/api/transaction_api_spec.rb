@@ -32,34 +32,34 @@ describe 'TransactionApi' do
     end
   end
 
-  # unit tests for create_transaction
+  # unit tests for transaction_create_transaction
   # @param coin_type 
   # @param body 
   # @param [Hash] opts the optional parameters
   # @return [OnchainTransactionReply]
-  describe 'create_transaction test' do
+  describe 'transaction_create_transaction test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for send_raw
+  # unit tests for transaction_send_raw
   # @param coin_type 
   # @param body 
   # @param [Hash] opts the optional parameters
   # @return [OnchainTransactionSendReply]
-  describe 'send_raw test' do
+  describe 'transaction_send_raw test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for sign_and_send
+  # unit tests for transaction_sign_and_send
   # @param coin_type 
   # @param body 
   # @param [Hash] opts the optional parameters
   # @return [OnchainTransactionSendReply]
-  describe 'sign_and_send test' do
+  describe 'transaction_sign_and_send test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
