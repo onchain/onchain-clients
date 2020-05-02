@@ -12,41 +12,25 @@ Swagger Codegen version: 2.4.13-SNAPSHOT
 
 require 'date'
 
-module Onchain
-  class OnchainBalanceAddressReply
-    attr_accessor :address
+module OnchainApi
+  class OnchainEthereumTransactionReply
+    attr_accessor :tx
 
-    attr_accessor :usd_balance
-
-    attr_accessor :balance
-
-    attr_accessor :unconfirmed_balance
-
-    attr_accessor :human_balance
-
-    attr_accessor :human_unconfirmed_balance
+    attr_accessor :to_sign
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'address' => :'address',
-        :'usd_balance' => :'usd_balance',
-        :'balance' => :'balance',
-        :'unconfirmed_balance' => :'unconfirmed_balance',
-        :'human_balance' => :'human_balance',
-        :'human_unconfirmed_balance' => :'human_unconfirmed_balance'
+        :'tx' => :'tx',
+        :'to_sign' => :'to_sign'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'address' => :'String',
-        :'usd_balance' => :'Float',
-        :'balance' => :'String',
-        :'unconfirmed_balance' => :'String',
-        :'human_balance' => :'Float',
-        :'human_unconfirmed_balance' => :'Float'
+        :'tx' => :'String',
+        :'to_sign' => :'String'
       }
     end
 
@@ -58,28 +42,12 @@ module Onchain
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'address')
-        self.address = attributes[:'address']
+      if attributes.has_key?(:'tx')
+        self.tx = attributes[:'tx']
       end
 
-      if attributes.has_key?(:'usd_balance')
-        self.usd_balance = attributes[:'usd_balance']
-      end
-
-      if attributes.has_key?(:'balance')
-        self.balance = attributes[:'balance']
-      end
-
-      if attributes.has_key?(:'unconfirmed_balance')
-        self.unconfirmed_balance = attributes[:'unconfirmed_balance']
-      end
-
-      if attributes.has_key?(:'human_balance')
-        self.human_balance = attributes[:'human_balance']
-      end
-
-      if attributes.has_key?(:'human_unconfirmed_balance')
-        self.human_unconfirmed_balance = attributes[:'human_unconfirmed_balance']
+      if attributes.has_key?(:'to_sign')
+        self.to_sign = attributes[:'to_sign']
       end
     end
 
@@ -87,13 +55,43 @@ module Onchain
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@tx.nil? && @tx !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
+        invalid_properties.push('invalid value for "tx", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.')
+      end
+
+      if !@to_sign.nil? && @to_sign !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
+        invalid_properties.push('invalid value for "to_sign", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@tx.nil? && @tx !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
+      return false if !@to_sign.nil? && @to_sign !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] tx Value to be assigned
+    def tx=(tx)
+      if !tx.nil? && tx !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
+        fail ArgumentError, 'invalid value for "tx", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.'
+      end
+
+      @tx = tx
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] to_sign Value to be assigned
+    def to_sign=(to_sign)
+      if !to_sign.nil? && to_sign !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
+        fail ArgumentError, 'invalid value for "to_sign", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.'
+      end
+
+      @to_sign = to_sign
     end
 
     # Checks equality by comparing each attribute.
@@ -101,12 +99,8 @@ module Onchain
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          address == o.address &&
-          usd_balance == o.usd_balance &&
-          balance == o.balance &&
-          unconfirmed_balance == o.unconfirmed_balance &&
-          human_balance == o.human_balance &&
-          human_unconfirmed_balance == o.human_unconfirmed_balance
+          tx == o.tx &&
+          to_sign == o.to_sign
     end
 
     # @see the `==` method
@@ -118,7 +112,7 @@ module Onchain
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [address, usd_balance, balance, unconfirmed_balance, human_balance, human_unconfirmed_balance].hash
+      [tx, to_sign].hash
     end
 
     # Builds the object from hash
@@ -178,7 +172,7 @@ module Onchain
           end
         end
       else # model
-        temp_model = Onchain.const_get(type).new
+        temp_model = OnchainApi.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

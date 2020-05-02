@@ -1,4 +1,4 @@
-# Onchain::OnchainRawTransactionSendRequest
+# OnchainApi::OnchainRawTransactionSendRequest
 
 ## Properties
 Name | Type | Description | Notes

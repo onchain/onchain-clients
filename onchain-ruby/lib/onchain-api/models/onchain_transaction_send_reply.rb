@@ -12,37 +12,21 @@ Swagger Codegen version: 2.4.13-SNAPSHOT
 
 require 'date'
 
-module Onchain
-  class OnchainTransactionRequest
-    attr_accessor :coin_type
-
-    attr_accessor :recipients
-
-    attr_accessor :from
-
-    attr_accessor :from_address
-
-    attr_accessor :miners_fee
+module OnchainApi
+  class OnchainTransactionSendReply
+    attr_accessor :tx_hash
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'coin_type' => :'coin_type',
-        :'recipients' => :'recipients',
-        :'from' => :'from',
-        :'from_address' => :'from_address',
-        :'miners_fee' => :'miners_fee'
+        :'tx_hash' => :'tx_hash'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'coin_type' => :'OnchainCoinType',
-        :'recipients' => :'Array<OnchainTransactionRecipient>',
-        :'from' => :'String',
-        :'from_address' => :'String',
-        :'miners_fee' => :'String'
+        :'tx_hash' => :'String'
       }
     end
 
@@ -54,26 +38,8 @@ module Onchain
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'coin_type')
-        self.coin_type = attributes[:'coin_type']
-      end
-
-      if attributes.has_key?(:'recipients')
-        if (value = attributes[:'recipients']).is_a?(Array)
-          self.recipients = value
-        end
-      end
-
-      if attributes.has_key?(:'from')
-        self.from = attributes[:'from']
-      end
-
-      if attributes.has_key?(:'from_address')
-        self.from_address = attributes[:'from_address']
-      end
-
-      if attributes.has_key?(:'miners_fee')
-        self.miners_fee = attributes[:'miners_fee']
+      if attributes.has_key?(:'tx_hash')
+        self.tx_hash = attributes[:'tx_hash']
       end
     end
 
@@ -81,8 +47,8 @@ module Onchain
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@from.nil? && @from !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
-        invalid_properties.push('invalid value for "from", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.')
+      if !@tx_hash.nil? && @tx_hash !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
+        invalid_properties.push('invalid value for "tx_hash", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.')
       end
 
       invalid_properties
@@ -91,18 +57,18 @@ module Onchain
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@from.nil? && @from !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
+      return false if !@tx_hash.nil? && @tx_hash !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] from Value to be assigned
-    def from=(from)
-      if !from.nil? && from !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
-        fail ArgumentError, 'invalid value for "from", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.'
+    # @param [Object] tx_hash Value to be assigned
+    def tx_hash=(tx_hash)
+      if !tx_hash.nil? && tx_hash !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
+        fail ArgumentError, 'invalid value for "tx_hash", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.'
       end
 
-      @from = from
+      @tx_hash = tx_hash
     end
 
     # Checks equality by comparing each attribute.
@@ -110,11 +76,7 @@ module Onchain
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          coin_type == o.coin_type &&
-          recipients == o.recipients &&
-          from == o.from &&
-          from_address == o.from_address &&
-          miners_fee == o.miners_fee
+          tx_hash == o.tx_hash
     end
 
     # @see the `==` method
@@ -126,7 +88,7 @@ module Onchain
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [coin_type, recipients, from, from_address, miners_fee].hash
+      [tx_hash].hash
     end
 
     # Builds the object from hash
@@ -186,7 +148,7 @@ module Onchain
           end
         end
       else # model
-        temp_model = Onchain.const_get(type).new
+        temp_model = OnchainApi.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

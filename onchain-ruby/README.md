@@ -1,6 +1,6 @@
-# onchain
+# onchain-api
 
-Onchain - the Ruby gem for the OnChain Crypto Currency API
+OnchainApi - the Ruby gem for the OnChain Crypto Currency API
 
 We need to add a proper description.
 
@@ -18,27 +18,27 @@ For more information, please visit [https://onchain.io](https://onchain.io)
 To build the Ruby code into a gem:
 
 ```shell
-gem build onchain.gemspec
+gem build onchain-api.gemspec
 ```
 
 Then either install the gem locally:
 
 ```shell
-gem install ./onchain-1.1.2.gem
+gem install ./onchain-api-1.1.2.gem
 ```
-(for development, run `gem install --dev ./onchain-1.1.2.gem` to install the development dependencies)
+(for development, run `gem install --dev ./onchain-api-1.1.2.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'onchain', '~> 1.1.2'
+    gem 'onchain-api', '~> 1.1.2'
 
 ### Install from Git
 
 If the Ruby gem is hosted at a git repository: https://github.com/GIT_USER_ID/GIT_REPO_ID, then add the following in the Gemfile:
 
-    gem 'onchain', :git => 'https://github.com/GIT_USER_ID/GIT_REPO_ID.git'
+    gem 'onchain-api', :git => 'https://github.com/GIT_USER_ID/GIT_REPO_ID.git'
 
 ### Include the Ruby code directly
 
@@ -53,9 +53,9 @@ ruby -Ilib script.rb
 Please follow the [installation](#installation) procedure and then run the following code:
 ```ruby
 # Load the gem
-require 'onchain'
+require 'onchain-api'
 
-api_instance = Onchain::AddressApi.new
+api_instance = OnchainApi::AddressApi.new
 
 coin_type = 'coin_type_example' # String | 
 
@@ -66,7 +66,7 @@ begin
   #Get Balance
   result = api_instance.address_get_balance(coin_type, address)
   p result
-rescue Onchain::ApiError => e
+rescue OnchainApi::ApiError => e
   puts "Exception when calling AddressApi->address_get_balance: #{e}"
 end
 
@@ -78,34 +78,34 @@ All URIs are relative to *https://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*Onchain::AddressApi* | [**address_get_balance**](docs/AddressApi.md#address_get_balance) | **GET** /api/address/balance/{coin_type}/{address} | Get Balance
-*Onchain::AddressApi* | [**address_get_balances**](docs/AddressApi.md#address_get_balances) | **GET** /api/address/balances/{coin_type}/{addresses} | Get Balances
-*Onchain::AddressApi* | [**address_get_history**](docs/AddressApi.md#address_get_history) | **GET** /api/address/history/{coin_type}/{addresses} | Get History
-*Onchain::AddressApi* | [**address_get_network_address**](docs/AddressApi.md#address_get_network_address) | **GET** /api/address/{coin_type}/{public_key} | 
-*Onchain::TransactionApi* | [**transaction_create_transaction**](docs/TransactionApi.md#transaction_create_transaction) | **POST** /api/transaction/create/{coin_type} | 
-*Onchain::TransactionApi* | [**transaction_send_raw**](docs/TransactionApi.md#transaction_send_raw) | **POST** /api/transaction/send_raw/{coin_type} | 
-*Onchain::TransactionApi* | [**transaction_sign_and_send**](docs/TransactionApi.md#transaction_sign_and_send) | **POST** /api/transaction/sign_and_send/{coin_type} | 
+*OnchainApi::AddressApi* | [**address_get_balance**](docs/AddressApi.md#address_get_balance) | **GET** /api/address/balance/{coin_type}/{address} | Get Balance
+*OnchainApi::AddressApi* | [**address_get_balances**](docs/AddressApi.md#address_get_balances) | **GET** /api/address/balances/{coin_type}/{addresses} | Get Balances
+*OnchainApi::AddressApi* | [**address_get_history**](docs/AddressApi.md#address_get_history) | **GET** /api/address/history/{coin_type}/{addresses} | Get History
+*OnchainApi::AddressApi* | [**address_get_network_address**](docs/AddressApi.md#address_get_network_address) | **GET** /api/address/{coin_type}/{public_key} | 
+*OnchainApi::TransactionApi* | [**transaction_create_transaction**](docs/TransactionApi.md#transaction_create_transaction) | **POST** /api/transaction/create/{coin_type} | 
+*OnchainApi::TransactionApi* | [**transaction_send_raw**](docs/TransactionApi.md#transaction_send_raw) | **POST** /api/transaction/send_raw/{coin_type} | 
+*OnchainApi::TransactionApi* | [**transaction_sign_and_send**](docs/TransactionApi.md#transaction_sign_and_send) | **POST** /api/transaction/sign_and_send/{coin_type} | 
 
 
 ## Documentation for Models
 
- - [Onchain::HistoryReplyTX](docs/HistoryReplyTX.md)
- - [Onchain::OnchainAddressReply](docs/OnchainAddressReply.md)
- - [Onchain::OnchainBalanceAddressReply](docs/OnchainBalanceAddressReply.md)
- - [Onchain::OnchainBalanceReply](docs/OnchainBalanceReply.md)
- - [Onchain::OnchainBalancesReply](docs/OnchainBalancesReply.md)
- - [Onchain::OnchainCoinType](docs/OnchainCoinType.md)
- - [Onchain::OnchainEthereumTransactionReply](docs/OnchainEthereumTransactionReply.md)
- - [Onchain::OnchainHashToSign](docs/OnchainHashToSign.md)
- - [Onchain::OnchainHistoryReply](docs/OnchainHistoryReply.md)
- - [Onchain::OnchainRawTransactionSendRequest](docs/OnchainRawTransactionSendRequest.md)
- - [Onchain::OnchainTransactionRecipient](docs/OnchainTransactionRecipient.md)
- - [Onchain::OnchainTransactionReply](docs/OnchainTransactionReply.md)
- - [Onchain::OnchainTransactionRequest](docs/OnchainTransactionRequest.md)
- - [Onchain::OnchainTransactionSendReply](docs/OnchainTransactionSendReply.md)
- - [Onchain::OnchainTransactionSendRequest](docs/OnchainTransactionSendRequest.md)
- - [Onchain::ProtobufAny](docs/ProtobufAny.md)
- - [Onchain::RuntimeError](docs/RuntimeError.md)
+ - [OnchainApi::HistoryReplyTX](docs/HistoryReplyTX.md)
+ - [OnchainApi::OnchainAddressReply](docs/OnchainAddressReply.md)
+ - [OnchainApi::OnchainBalanceAddressReply](docs/OnchainBalanceAddressReply.md)
+ - [OnchainApi::OnchainBalanceReply](docs/OnchainBalanceReply.md)
+ - [OnchainApi::OnchainBalancesReply](docs/OnchainBalancesReply.md)
+ - [OnchainApi::OnchainCoinType](docs/OnchainCoinType.md)
+ - [OnchainApi::OnchainEthereumTransactionReply](docs/OnchainEthereumTransactionReply.md)
+ - [OnchainApi::OnchainHashToSign](docs/OnchainHashToSign.md)
+ - [OnchainApi::OnchainHistoryReply](docs/OnchainHistoryReply.md)
+ - [OnchainApi::OnchainRawTransactionSendRequest](docs/OnchainRawTransactionSendRequest.md)
+ - [OnchainApi::OnchainTransactionRecipient](docs/OnchainTransactionRecipient.md)
+ - [OnchainApi::OnchainTransactionReply](docs/OnchainTransactionReply.md)
+ - [OnchainApi::OnchainTransactionRequest](docs/OnchainTransactionRequest.md)
+ - [OnchainApi::OnchainTransactionSendReply](docs/OnchainTransactionSendReply.md)
+ - [OnchainApi::OnchainTransactionSendRequest](docs/OnchainTransactionSendRequest.md)
+ - [OnchainApi::ProtobufAny](docs/ProtobufAny.md)
+ - [OnchainApi::RuntimeError](docs/RuntimeError.md)
 
 
 ## Documentation for Authorization

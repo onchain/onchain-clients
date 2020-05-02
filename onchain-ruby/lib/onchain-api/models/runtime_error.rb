@@ -12,21 +12,33 @@ Swagger Codegen version: 2.4.13-SNAPSHOT
 
 require 'date'
 
-module Onchain
-  class OnchainTransactionSendReply
-    attr_accessor :tx_hash
+module OnchainApi
+  class RuntimeError
+    attr_accessor :error
+
+    attr_accessor :code
+
+    attr_accessor :message
+
+    attr_accessor :details
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'tx_hash' => :'tx_hash'
+        :'error' => :'error',
+        :'code' => :'code',
+        :'message' => :'message',
+        :'details' => :'details'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'tx_hash' => :'String'
+        :'error' => :'String',
+        :'code' => :'Integer',
+        :'message' => :'String',
+        :'details' => :'Array<ProtobufAny>'
       }
     end
 
@@ -38,8 +50,22 @@ module Onchain
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'tx_hash')
-        self.tx_hash = attributes[:'tx_hash']
+      if attributes.has_key?(:'error')
+        self.error = attributes[:'error']
+      end
+
+      if attributes.has_key?(:'code')
+        self.code = attributes[:'code']
+      end
+
+      if attributes.has_key?(:'message')
+        self.message = attributes[:'message']
+      end
+
+      if attributes.has_key?(:'details')
+        if (value = attributes[:'details']).is_a?(Array)
+          self.details = value
+        end
       end
     end
 
@@ -47,28 +73,13 @@ module Onchain
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@tx_hash.nil? && @tx_hash !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
-        invalid_properties.push('invalid value for "tx_hash", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@tx_hash.nil? && @tx_hash !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] tx_hash Value to be assigned
-    def tx_hash=(tx_hash)
-      if !tx_hash.nil? && tx_hash !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
-        fail ArgumentError, 'invalid value for "tx_hash", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.'
-      end
-
-      @tx_hash = tx_hash
     end
 
     # Checks equality by comparing each attribute.
@@ -76,7 +87,10 @@ module Onchain
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          tx_hash == o.tx_hash
+          error == o.error &&
+          code == o.code &&
+          message == o.message &&
+          details == o.details
     end
 
     # @see the `==` method
@@ -88,7 +102,7 @@ module Onchain
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [tx_hash].hash
+      [error, code, message, details].hash
     end
 
     # Builds the object from hash
@@ -148,7 +162,7 @@ module Onchain
           end
         end
       else # model
-        temp_model = Onchain.const_get(type).new
+        temp_model = OnchainApi.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

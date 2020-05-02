@@ -1,4 +1,4 @@
-# Onchain::HistoryReplyTX
+# OnchainApi::HistoryReplyTX
 
 ## Properties
 Name | Type | Description | Notes

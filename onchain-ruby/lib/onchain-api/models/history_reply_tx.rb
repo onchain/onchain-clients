@@ -12,29 +12,41 @@ Swagger Codegen version: 2.4.13-SNAPSHOT
 
 require 'date'
 
-module Onchain
-  class OnchainTransactionReply
-    attr_accessor :tx
+module OnchainApi
+  class HistoryReplyTX
+    attr_accessor :confirmations
 
-    attr_accessor :total_input_value
+    attr_accessor :time
 
-    attr_accessor :hashes_to_sign
+    attr_accessor :is_deposit
+
+    attr_accessor :address
+
+    attr_accessor :amount
+
+    attr_accessor :human_amount
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'tx' => :'tx',
-        :'total_input_value' => :'total_input_value',
-        :'hashes_to_sign' => :'hashes_to_sign'
+        :'confirmations' => :'confirmations',
+        :'time' => :'time',
+        :'is_deposit' => :'is_deposit',
+        :'address' => :'address',
+        :'amount' => :'amount',
+        :'human_amount' => :'human_amount'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'tx' => :'String',
-        :'total_input_value' => :'String',
-        :'hashes_to_sign' => :'Array<OnchainHashToSign>'
+        :'confirmations' => :'String',
+        :'time' => :'String',
+        :'is_deposit' => :'BOOLEAN',
+        :'address' => :'String',
+        :'amount' => :'String',
+        :'human_amount' => :'Float'
       }
     end
 
@@ -46,18 +58,28 @@ module Onchain
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'tx')
-        self.tx = attributes[:'tx']
+      if attributes.has_key?(:'confirmations')
+        self.confirmations = attributes[:'confirmations']
       end
 
-      if attributes.has_key?(:'total_input_value')
-        self.total_input_value = attributes[:'total_input_value']
+      if attributes.has_key?(:'time')
+        self.time = attributes[:'time']
       end
 
-      if attributes.has_key?(:'hashes_to_sign')
-        if (value = attributes[:'hashes_to_sign']).is_a?(Array)
-          self.hashes_to_sign = value
-        end
+      if attributes.has_key?(:'is_deposit')
+        self.is_deposit = attributes[:'is_deposit']
+      end
+
+      if attributes.has_key?(:'address')
+        self.address = attributes[:'address']
+      end
+
+      if attributes.has_key?(:'amount')
+        self.amount = attributes[:'amount']
+      end
+
+      if attributes.has_key?(:'human_amount')
+        self.human_amount = attributes[:'human_amount']
       end
     end
 
@@ -65,28 +87,13 @@ module Onchain
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@tx.nil? && @tx !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
-        invalid_properties.push('invalid value for "tx", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@tx.nil? && @tx !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] tx Value to be assigned
-    def tx=(tx)
-      if !tx.nil? && tx !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
-        fail ArgumentError, 'invalid value for "tx", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.'
-      end
-
-      @tx = tx
     end
 
     # Checks equality by comparing each attribute.
@@ -94,9 +101,12 @@ module Onchain
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          tx == o.tx &&
-          total_input_value == o.total_input_value &&
-          hashes_to_sign == o.hashes_to_sign
+          confirmations == o.confirmations &&
+          time == o.time &&
+          is_deposit == o.is_deposit &&
+          address == o.address &&
+          amount == o.amount &&
+          human_amount == o.human_amount
     end
 
     # @see the `==` method
@@ -108,7 +118,7 @@ module Onchain
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [tx, total_input_value, hashes_to_sign].hash
+      [confirmations, time, is_deposit, address, amount, human_amount].hash
     end
 
     # Builds the object from hash
@@ -168,7 +178,7 @@ module Onchain
           end
         end
       else # model
-        temp_model = Onchain.const_get(type).new
+        temp_model = OnchainApi.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

@@ -12,7 +12,7 @@ Swagger Codegen version: 2.4.13-SNAPSHOT
 
 require 'uri'
 
-module Onchain
+module OnchainApi
   class AddressApi
     attr_accessor :api_client
 

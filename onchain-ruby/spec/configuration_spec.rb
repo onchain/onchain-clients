@@ -12,14 +12,14 @@ Swagger Codegen version: 2.4.13-SNAPSHOT
 
 require 'spec_helper'
 
-describe Onchain::Configuration do
-  let(:config) { Onchain::Configuration.default }
+describe OnchainApi::Configuration do
+  let(:config) { OnchainApi::Configuration.default }
 
   before(:each) do
     # uncomment below to setup host and base_path
     # require 'URI'
     # uri = URI.parse("https://localhost")
-    # Onchain.configure do |c|
+    # OnchainApi.configure do |c|
     #   c.host = uri.host
     #   c.base_path = uri.path
     # end

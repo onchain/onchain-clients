@@ -1,4 +1,4 @@
-# Onchain::AddressApi
+# OnchainApi::AddressApi
 
 All URIs are relative to *https://localhost*
 
@@ -20,9 +20,9 @@ Returns the satoshi balance, usd balance and user viewable balance for an addres
 ### Example
 ```ruby
 # load the gem
-require 'onchain'
+require 'onchain-api'
 
-api_instance = Onchain::AddressApi.new
+api_instance = OnchainApi::AddressApi.new
 
 coin_type = 'coin_type_example' # String | 
 
@@ -33,7 +33,7 @@ begin
   #Get Balance
   result = api_instance.address_get_balance(coin_type, address)
   p result
-rescue Onchain::ApiError => e
+rescue OnchainApi::ApiError => e
   puts "Exception when calling AddressApi->address_get_balance: #{e}"
 end
 ```
@@ -70,9 +70,9 @@ Returns the satoshi balance, usd balance and user viewable balance for a set of 
 ### Example
 ```ruby
 # load the gem
-require 'onchain'
+require 'onchain-api'
 
-api_instance = Onchain::AddressApi.new
+api_instance = OnchainApi::AddressApi.new
 
 coin_type = 'coin_type_example' # String | 
 
@@ -83,7 +83,7 @@ begin
   #Get Balances
   result = api_instance.address_get_balances(coin_type, addresses)
   p result
-rescue Onchain::ApiError => e
+rescue OnchainApi::ApiError => e
   puts "Exception when calling AddressApi->address_get_balances: #{e}"
 end
 ```
@@ -120,9 +120,9 @@ Returns the transaction history for an address or addresses.
 ### Example
 ```ruby
 # load the gem
-require 'onchain'
+require 'onchain-api'
 
-api_instance = Onchain::AddressApi.new
+api_instance = OnchainApi::AddressApi.new
 
 coin_type = 'coin_type_example' # String | 
 
@@ -133,7 +133,7 @@ begin
   #Get History
   result = api_instance.address_get_history(coin_type, addresses)
   p result
-rescue Onchain::ApiError => e
+rescue OnchainApi::ApiError => e
   puts "Exception when calling AddressApi->address_get_history: #{e}"
 end
 ```
@@ -168,9 +168,9 @@ No authorization required
 ### Example
 ```ruby
 # load the gem
-require 'onchain'
+require 'onchain-api'
 
-api_instance = Onchain::AddressApi.new
+api_instance = OnchainApi::AddressApi.new
 
 coin_type = 'coin_type_example' # String | 
 
@@ -180,7 +180,7 @@ public_key = 'B' # String |
 begin
   result = api_instance.address_get_network_address(coin_type, public_key)
   p result
-rescue Onchain::ApiError => e
+rescue OnchainApi::ApiError => e
   puts "Exception when calling AddressApi->address_get_network_address: #{e}"
 end
 ```

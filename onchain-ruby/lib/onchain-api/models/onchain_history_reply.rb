@@ -12,25 +12,25 @@ Swagger Codegen version: 2.4.13-SNAPSHOT
 
 require 'date'
 
-module Onchain
-  class OnchainBalancesReply
-    attr_accessor :addresses
+module OnchainApi
+  class OnchainHistoryReply
+    attr_accessor :total_txs
 
-    attr_accessor :totals
+    attr_accessor :txs
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'addresses' => :'addresses',
-        :'totals' => :'totals'
+        :'total_txs' => :'total_txs',
+        :'txs' => :'txs'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'addresses' => :'Array<OnchainBalanceAddressReply>',
-        :'totals' => :'OnchainBalanceReply'
+        :'total_txs' => :'String',
+        :'txs' => :'Array<HistoryReplyTX>'
       }
     end
 
@@ -42,14 +42,14 @@ module Onchain
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'addresses')
-        if (value = attributes[:'addresses']).is_a?(Array)
-          self.addresses = value
-        end
+      if attributes.has_key?(:'total_txs')
+        self.total_txs = attributes[:'total_txs']
       end
 
-      if attributes.has_key?(:'totals')
-        self.totals = attributes[:'totals']
+      if attributes.has_key?(:'txs')
+        if (value = attributes[:'txs']).is_a?(Array)
+          self.txs = value
+        end
       end
     end
 
@@ -71,8 +71,8 @@ module Onchain
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          addresses == o.addresses &&
-          totals == o.totals
+          total_txs == o.total_txs &&
+          txs == o.txs
     end
 
     # @see the `==` method
@@ -84,7 +84,7 @@ module Onchain
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [addresses, totals].hash
+      [total_txs, txs].hash
     end
 
     # Builds the object from hash
@@ -144,7 +144,7 @@ module Onchain
           end
         end
       else # model
-        temp_model = Onchain.const_get(type).new
+        temp_model = OnchainApi.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

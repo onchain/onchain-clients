@@ -1,4 +1,4 @@
-# Onchain::ProtobufAny
+# OnchainApi::ProtobufAny
 
 ## Properties
 Name | Type | Description | Notes

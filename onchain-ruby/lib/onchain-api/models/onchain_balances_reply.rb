@@ -12,41 +12,25 @@ Swagger Codegen version: 2.4.13-SNAPSHOT
 
 require 'date'
 
-module Onchain
-  class HistoryReplyTX
-    attr_accessor :confirmations
+module OnchainApi
+  class OnchainBalancesReply
+    attr_accessor :addresses
 
-    attr_accessor :time
-
-    attr_accessor :is_deposit
-
-    attr_accessor :address
-
-    attr_accessor :amount
-
-    attr_accessor :human_amount
+    attr_accessor :totals
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'confirmations' => :'confirmations',
-        :'time' => :'time',
-        :'is_deposit' => :'is_deposit',
-        :'address' => :'address',
-        :'amount' => :'amount',
-        :'human_amount' => :'human_amount'
+        :'addresses' => :'addresses',
+        :'totals' => :'totals'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'confirmations' => :'String',
-        :'time' => :'String',
-        :'is_deposit' => :'BOOLEAN',
-        :'address' => :'String',
-        :'amount' => :'String',
-        :'human_amount' => :'Float'
+        :'addresses' => :'Array<OnchainBalanceAddressReply>',
+        :'totals' => :'OnchainBalanceReply'
       }
     end
 
@@ -58,28 +42,14 @@ module Onchain
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'confirmations')
-        self.confirmations = attributes[:'confirmations']
+      if attributes.has_key?(:'addresses')
+        if (value = attributes[:'addresses']).is_a?(Array)
+          self.addresses = value
+        end
       end
 
-      if attributes.has_key?(:'time')
-        self.time = attributes[:'time']
-      end
-
-      if attributes.has_key?(:'is_deposit')
-        self.is_deposit = attributes[:'is_deposit']
-      end
-
-      if attributes.has_key?(:'address')
-        self.address = attributes[:'address']
-      end
-
-      if attributes.has_key?(:'amount')
-        self.amount = attributes[:'amount']
-      end
-
-      if attributes.has_key?(:'human_amount')
-        self.human_amount = attributes[:'human_amount']
+      if attributes.has_key?(:'totals')
+        self.totals = attributes[:'totals']
       end
     end
 
@@ -101,12 +71,8 @@ module Onchain
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          confirmations == o.confirmations &&
-          time == o.time &&
-          is_deposit == o.is_deposit &&
-          address == o.address &&
-          amount == o.amount &&
-          human_amount == o.human_amount
+          addresses == o.addresses &&
+          totals == o.totals
     end
 
     # @see the `==` method
@@ -118,7 +84,7 @@ module Onchain
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [confirmations, time, is_deposit, address, amount, human_amount].hash
+      [addresses, totals].hash
     end
 
     # Builds the object from hash
@@ -178,7 +144,7 @@ module Onchain
           end
         end
       else # model
-        temp_model = Onchain.const_get(type).new
+        temp_model = OnchainApi.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

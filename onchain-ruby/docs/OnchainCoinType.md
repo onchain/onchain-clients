@@ -1,4 +1,4 @@
-# Onchain::OnchainCoinType
+# OnchainApi::OnchainCoinType
 
 ## Properties
 Name | Type | Description | Notes

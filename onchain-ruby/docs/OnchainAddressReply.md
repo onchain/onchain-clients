@@ -1,4 +1,4 @@
-# Onchain::OnchainAddressReply
+# OnchainApi::OnchainAddressReply
 
 ## Properties
 Name | Type | Description | Notes

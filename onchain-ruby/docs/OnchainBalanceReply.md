@@ -1,4 +1,4 @@
-# Onchain::OnchainBalanceReply
+# OnchainApi::OnchainBalanceReply
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# Onchain::OnchainBalanceAddressReply
+# OnchainApi::OnchainBalanceAddressReply
 
 ## Properties
 Name | Type | Description | Notes

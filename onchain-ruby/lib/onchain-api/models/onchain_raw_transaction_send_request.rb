@@ -12,37 +12,25 @@ Swagger Codegen version: 2.4.13-SNAPSHOT
 
 require 'date'
 
-module Onchain
-  class OnchainBalanceReply
-    attr_accessor :usd_balance
+module OnchainApi
+  class OnchainRawTransactionSendRequest
+    attr_accessor :coin_type
 
-    attr_accessor :balance
-
-    attr_accessor :unconfirmed_balance
-
-    attr_accessor :human_balance
-
-    attr_accessor :human_unconfirmed_balance
+    attr_accessor :tx
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'usd_balance' => :'usd_balance',
-        :'balance' => :'balance',
-        :'unconfirmed_balance' => :'unconfirmed_balance',
-        :'human_balance' => :'human_balance',
-        :'human_unconfirmed_balance' => :'human_unconfirmed_balance'
+        :'coin_type' => :'coin_type',
+        :'tx' => :'tx'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'usd_balance' => :'Float',
-        :'balance' => :'String',
-        :'unconfirmed_balance' => :'String',
-        :'human_balance' => :'Float',
-        :'human_unconfirmed_balance' => :'Float'
+        :'coin_type' => :'OnchainCoinType',
+        :'tx' => :'String'
       }
     end
 
@@ -54,24 +42,12 @@ module Onchain
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'usd_balance')
-        self.usd_balance = attributes[:'usd_balance']
+      if attributes.has_key?(:'coin_type')
+        self.coin_type = attributes[:'coin_type']
       end
 
-      if attributes.has_key?(:'balance')
-        self.balance = attributes[:'balance']
-      end
-
-      if attributes.has_key?(:'unconfirmed_balance')
-        self.unconfirmed_balance = attributes[:'unconfirmed_balance']
-      end
-
-      if attributes.has_key?(:'human_balance')
-        self.human_balance = attributes[:'human_balance']
-      end
-
-      if attributes.has_key?(:'human_unconfirmed_balance')
-        self.human_unconfirmed_balance = attributes[:'human_unconfirmed_balance']
+      if attributes.has_key?(:'tx')
+        self.tx = attributes[:'tx']
       end
     end
 
@@ -79,13 +55,28 @@ module Onchain
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@tx.nil? && @tx !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
+        invalid_properties.push('invalid value for "tx", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@tx.nil? && @tx !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] tx Value to be assigned
+    def tx=(tx)
+      if !tx.nil? && tx !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
+        fail ArgumentError, 'invalid value for "tx", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.'
+      end
+
+      @tx = tx
     end
 
     # Checks equality by comparing each attribute.
@@ -93,11 +84,8 @@ module Onchain
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          usd_balance == o.usd_balance &&
-          balance == o.balance &&
-          unconfirmed_balance == o.unconfirmed_balance &&
-          human_balance == o.human_balance &&
-          human_unconfirmed_balance == o.human_unconfirmed_balance
+          coin_type == o.coin_type &&
+          tx == o.tx
     end
 
     # @see the `==` method
@@ -109,7 +97,7 @@ module Onchain
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [usd_balance, balance, unconfirmed_balance, human_balance, human_unconfirmed_balance].hash
+      [coin_type, tx].hash
     end
 
     # Builds the object from hash
@@ -169,7 +157,7 @@ module Onchain
           end
         end
       else # model
-        temp_model = Onchain.const_get(type).new
+        temp_model = OnchainApi.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

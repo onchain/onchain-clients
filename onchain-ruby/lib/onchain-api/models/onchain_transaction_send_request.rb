@@ -12,7 +12,7 @@ Swagger Codegen version: 2.4.13-SNAPSHOT
 
 require 'date'
 
-module Onchain
+module OnchainApi
   class OnchainTransactionSendRequest
     attr_accessor :coin_type
 
@@ -168,7 +168,7 @@ module Onchain
           end
         end
       else # model
-        temp_model = Onchain.const_get(type).new
+        temp_model = OnchainApi.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

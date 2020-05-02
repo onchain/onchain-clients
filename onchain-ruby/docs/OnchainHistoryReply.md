@@ -1,4 +1,4 @@
-# Onchain::OnchainHistoryReply
+# OnchainApi::OnchainHistoryReply
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# Onchain::RuntimeError
+# OnchainApi::RuntimeError
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# Onchain::TransactionApi
+# OnchainApi::TransactionApi
 
 All URIs are relative to *https://localhost*
 
@@ -17,19 +17,19 @@ Method | HTTP request | Description
 ### Example
 ```ruby
 # load the gem
-require 'onchain'
+require 'onchain-api'
 
-api_instance = Onchain::TransactionApi.new
+api_instance = OnchainApi::TransactionApi.new
 
 coin_type = 'coin_type_example' # String | 
 
-body = Onchain::OnchainTransactionRequest.new # OnchainTransactionRequest | 
+body = OnchainApi::OnchainTransactionRequest.new # OnchainTransactionRequest | 
 
 
 begin
   result = api_instance.transaction_create_transaction(coin_type, body)
   p result
-rescue Onchain::ApiError => e
+rescue OnchainApi::ApiError => e
   puts "Exception when calling TransactionApi->transaction_create_transaction: #{e}"
 end
 ```
@@ -64,19 +64,19 @@ No authorization required
 ### Example
 ```ruby
 # load the gem
-require 'onchain'
+require 'onchain-api'
 
-api_instance = Onchain::TransactionApi.new
+api_instance = OnchainApi::TransactionApi.new
 
 coin_type = 'coin_type_example' # String | 
 
-body = Onchain::OnchainRawTransactionSendRequest.new # OnchainRawTransactionSendRequest | 
+body = OnchainApi::OnchainRawTransactionSendRequest.new # OnchainRawTransactionSendRequest | 
 
 
 begin
   result = api_instance.transaction_send_raw(coin_type, body)
   p result
-rescue Onchain::ApiError => e
+rescue OnchainApi::ApiError => e
   puts "Exception when calling TransactionApi->transaction_send_raw: #{e}"
 end
 ```
@@ -111,19 +111,19 @@ No authorization required
 ### Example
 ```ruby
 # load the gem
-require 'onchain'
+require 'onchain-api'
 
-api_instance = Onchain::TransactionApi.new
+api_instance = OnchainApi::TransactionApi.new
 
 coin_type = 'coin_type_example' # String | 
 
-body = Onchain::OnchainTransactionSendRequest.new # OnchainTransactionSendRequest | 
+body = OnchainApi::OnchainTransactionSendRequest.new # OnchainTransactionSendRequest | 
 
 
 begin
   result = api_instance.transaction_sign_and_send(coin_type, body)
   p result
-rescue Onchain::ApiError => e
+rescue OnchainApi::ApiError => e
   puts "Exception when calling TransactionApi->transaction_sign_and_send: #{e}"
 end
 ```

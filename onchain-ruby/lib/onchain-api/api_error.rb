@@ -10,7 +10,7 @@ Swagger Codegen version: 2.4.13-SNAPSHOT
 
 =end
 
-module Onchain
+module OnchainApi
   class ApiError < StandardError
     attr_reader :code, :response_headers, :response_body
 

@@ -1,4 +1,4 @@
-# Onchain::OnchainTransactionRecipient
+# OnchainApi::OnchainTransactionRecipient
 
 ## Properties
 Name | Type | Description | Notes

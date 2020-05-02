@@ -1,4 +1,4 @@
-# Onchain::OnchainEthereumTransactionReply
+# OnchainApi::OnchainEthereumTransactionReply
 
 ## Properties
 Name | Type | Description | Notes

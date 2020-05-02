@@ -13,11 +13,11 @@ Swagger Codegen version: 2.4.13-SNAPSHOT
 =end
 
 $:.push File.expand_path("../lib", __FILE__)
-require "onchain/version"
+require "onchain-api/version"
 
 Gem::Specification.new do |s|
-  s.name        = "onchain"
-  s.version     = Onchain::VERSION
+  s.name        = "onchain-api"
+  s.version     = OnchainApi::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Swagger-Codegen"]
   s.email       = ["support@onchain.io"]

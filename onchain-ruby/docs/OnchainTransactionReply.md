@@ -1,4 +1,4 @@
-# Onchain::OnchainTransactionReply
+# OnchainApi::OnchainTransactionReply
 
 ## Properties
 Name | Type | Description | Notes

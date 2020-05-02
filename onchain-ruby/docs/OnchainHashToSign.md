@@ -1,4 +1,4 @@
-# Onchain::OnchainHashToSign
+# OnchainApi::OnchainHashToSign
 
 ## Properties
 Name | Type | Description | Notes

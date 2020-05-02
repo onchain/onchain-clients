@@ -12,7 +12,7 @@ Swagger Codegen version: 2.4.13-SNAPSHOT
 
 require 'date'
 
-module Onchain
+module OnchainApi
   class OnchainCoinType
     
     BITCOIN = 'BITCOIN'.freeze
