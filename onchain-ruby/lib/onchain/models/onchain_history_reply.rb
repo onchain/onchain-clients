@@ -12,21 +12,25 @@ Swagger Codegen version: 2.4.13-SNAPSHOT
 
 require 'date'
 
-module SwaggerClient
-  class OnchainBalancesReply
-    attr_accessor :balances
+module Onchain
+  class OnchainHistoryReply
+    attr_accessor :total_txs
+
+    attr_accessor :txs
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'balances' => :'balances'
+        :'total_txs' => :'total_txs',
+        :'txs' => :'txs'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'balances' => :'Array<OnchainBalanceReply>'
+        :'total_txs' => :'String',
+        :'txs' => :'Array<HistoryReplyTX>'
       }
     end
 
@@ -38,9 +42,13 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'balances')
-        if (value = attributes[:'balances']).is_a?(Array)
-          self.balances = value
+      if attributes.has_key?(:'total_txs')
+        self.total_txs = attributes[:'total_txs']
+      end
+
+      if attributes.has_key?(:'txs')
+        if (value = attributes[:'txs']).is_a?(Array)
+          self.txs = value
         end
       end
     end
@@ -63,7 +71,8 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          balances == o.balances
+          total_txs == o.total_txs &&
+          txs == o.txs
     end
 
     # @see the `==` method
@@ -75,7 +84,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [balances].hash
+      [total_txs, txs].hash
     end
 
     # Builds the object from hash
@@ -135,7 +144,7 @@ module SwaggerClient
           end
         end
       else # model
-        temp_model = SwaggerClient.const_get(type).new
+        temp_model = Onchain.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

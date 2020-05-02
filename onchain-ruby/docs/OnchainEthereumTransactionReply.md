@@ -1,4 +1,4 @@
-# SwaggerClient::OnchainEthereumTransactionReply
+# Onchain::OnchainEthereumTransactionReply
 
 ## Properties
 Name | Type | Description | Notes

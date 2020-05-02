@@ -1,4 +1,6 @@
 {
     "modelPackage" : "onchain",
-    "apiPackage" : "onchain"
+    "apiPackage" : "onchain",
+    "gemVersion": "1.1.2",
+    "gemName": "onchain"
 }

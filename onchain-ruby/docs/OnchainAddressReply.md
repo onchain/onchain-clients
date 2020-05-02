@@ -1,4 +1,4 @@
-# SwaggerClient::OnchainAddressReply
+# Onchain::OnchainAddressReply
 
 ## Properties
 Name | Type | Description | Notes

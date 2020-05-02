@@ -12,33 +12,37 @@ Swagger Codegen version: 2.4.13-SNAPSHOT
 
 require 'date'
 
-module SwaggerClient
-  class RuntimeError
-    attr_accessor :error
+module Onchain
+  class OnchainTransactionRequest
+    attr_accessor :coin_type
 
-    attr_accessor :code
+    attr_accessor :recipients
 
-    attr_accessor :message
+    attr_accessor :from
 
-    attr_accessor :details
+    attr_accessor :from_address
+
+    attr_accessor :miners_fee
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'error' => :'error',
-        :'code' => :'code',
-        :'message' => :'message',
-        :'details' => :'details'
+        :'coin_type' => :'coin_type',
+        :'recipients' => :'recipients',
+        :'from' => :'from',
+        :'from_address' => :'from_address',
+        :'miners_fee' => :'miners_fee'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'error' => :'String',
-        :'code' => :'Integer',
-        :'message' => :'String',
-        :'details' => :'Array<ProtobufAny>'
+        :'coin_type' => :'OnchainCoinType',
+        :'recipients' => :'Array<OnchainTransactionRecipient>',
+        :'from' => :'String',
+        :'from_address' => :'String',
+        :'miners_fee' => :'String'
       }
     end
 
@@ -50,22 +54,26 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'error')
-        self.error = attributes[:'error']
+      if attributes.has_key?(:'coin_type')
+        self.coin_type = attributes[:'coin_type']
       end
 
-      if attributes.has_key?(:'code')
-        self.code = attributes[:'code']
-      end
-
-      if attributes.has_key?(:'message')
-        self.message = attributes[:'message']
-      end
-
-      if attributes.has_key?(:'details')
-        if (value = attributes[:'details']).is_a?(Array)
-          self.details = value
+      if attributes.has_key?(:'recipients')
+        if (value = attributes[:'recipients']).is_a?(Array)
+          self.recipients = value
         end
+      end
+
+      if attributes.has_key?(:'from')
+        self.from = attributes[:'from']
+      end
+
+      if attributes.has_key?(:'from_address')
+        self.from_address = attributes[:'from_address']
+      end
+
+      if attributes.has_key?(:'miners_fee')
+        self.miners_fee = attributes[:'miners_fee']
       end
     end
 
@@ -73,13 +81,28 @@ module SwaggerClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@from.nil? && @from !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
+        invalid_properties.push('invalid value for "from", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@from.nil? && @from !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] from Value to be assigned
+    def from=(from)
+      if !from.nil? && from !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
+        fail ArgumentError, 'invalid value for "from", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.'
+      end
+
+      @from = from
     end
 
     # Checks equality by comparing each attribute.
@@ -87,10 +110,11 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          error == o.error &&
-          code == o.code &&
-          message == o.message &&
-          details == o.details
+          coin_type == o.coin_type &&
+          recipients == o.recipients &&
+          from == o.from &&
+          from_address == o.from_address &&
+          miners_fee == o.miners_fee
     end
 
     # @see the `==` method
@@ -102,7 +126,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [error, code, message, details].hash
+      [coin_type, recipients, from, from_address, miners_fee].hash
     end
 
     # Builds the object from hash
@@ -162,7 +186,7 @@ module SwaggerClient
           end
         end
       else # model
-        temp_model = SwaggerClient.const_get(type).new
+        temp_model = Onchain.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

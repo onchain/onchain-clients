@@ -1,4 +1,4 @@
-# SwaggerClient::OnchainTransactionSendReply
+# Onchain::OnchainTransactionSendReply
 
 ## Properties
 Name | Type | Description | Notes

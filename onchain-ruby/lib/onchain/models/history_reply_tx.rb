@@ -12,25 +12,41 @@ Swagger Codegen version: 2.4.13-SNAPSHOT
 
 require 'date'
 
-module SwaggerClient
-  class OnchainHistoryReply
-    attr_accessor :total_txs
+module Onchain
+  class HistoryReplyTX
+    attr_accessor :confirmations
 
-    attr_accessor :txs
+    attr_accessor :time
+
+    attr_accessor :is_deposit
+
+    attr_accessor :address
+
+    attr_accessor :amount
+
+    attr_accessor :human_amount
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'total_txs' => :'total_txs',
-        :'txs' => :'txs'
+        :'confirmations' => :'confirmations',
+        :'time' => :'time',
+        :'is_deposit' => :'is_deposit',
+        :'address' => :'address',
+        :'amount' => :'amount',
+        :'human_amount' => :'human_amount'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'total_txs' => :'String',
-        :'txs' => :'Array<HistoryReplyTX>'
+        :'confirmations' => :'String',
+        :'time' => :'String',
+        :'is_deposit' => :'BOOLEAN',
+        :'address' => :'String',
+        :'amount' => :'String',
+        :'human_amount' => :'Float'
       }
     end
 
@@ -42,14 +58,28 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'total_txs')
-        self.total_txs = attributes[:'total_txs']
+      if attributes.has_key?(:'confirmations')
+        self.confirmations = attributes[:'confirmations']
       end
 
-      if attributes.has_key?(:'txs')
-        if (value = attributes[:'txs']).is_a?(Array)
-          self.txs = value
-        end
+      if attributes.has_key?(:'time')
+        self.time = attributes[:'time']
+      end
+
+      if attributes.has_key?(:'is_deposit')
+        self.is_deposit = attributes[:'is_deposit']
+      end
+
+      if attributes.has_key?(:'address')
+        self.address = attributes[:'address']
+      end
+
+      if attributes.has_key?(:'amount')
+        self.amount = attributes[:'amount']
+      end
+
+      if attributes.has_key?(:'human_amount')
+        self.human_amount = attributes[:'human_amount']
       end
     end
 
@@ -71,8 +101,12 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          total_txs == o.total_txs &&
-          txs == o.txs
+          confirmations == o.confirmations &&
+          time == o.time &&
+          is_deposit == o.is_deposit &&
+          address == o.address &&
+          amount == o.amount &&
+          human_amount == o.human_amount
     end
 
     # @see the `==` method
@@ -84,7 +118,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [total_txs, txs].hash
+      [confirmations, time, is_deposit, address, amount, human_amount].hash
     end
 
     # Builds the object from hash
@@ -144,7 +178,7 @@ module SwaggerClient
           end
         end
       else # model
-        temp_model = SwaggerClient.const_get(type).new
+        temp_model = Onchain.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

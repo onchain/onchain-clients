@@ -12,7 +12,7 @@ Swagger Codegen version: 2.4.13-SNAPSHOT
 
 require 'uri'
 
-module SwaggerClient
+module Onchain
   class Configuration
     # Defines url scheme
     attr_accessor :scheme

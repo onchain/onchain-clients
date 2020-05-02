@@ -429,6 +429,34 @@
         }
       }
     },
+    "onchainBalanceAddressReply": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "usd_balance": {
+          "type": "number",
+          "format": "float"
+        },
+        "balance": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "unconfirmed_balance": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "human_balance": {
+          "type": "number",
+          "format": "double"
+        },
+        "human_unconfirmed_balance": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
     "onchainBalanceReply": {
       "type": "object",
       "properties": {
@@ -457,11 +485,14 @@
     "onchainBalancesReply": {
       "type": "object",
       "properties": {
-        "balances": {
+        "addresses": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/onchainBalanceReply"
+            "$ref": "#/definitions/onchainBalanceAddressReply"
           }
+        },
+        "totals": {
+          "$ref": "#/definitions/onchainBalanceReply"
         }
       }
     },

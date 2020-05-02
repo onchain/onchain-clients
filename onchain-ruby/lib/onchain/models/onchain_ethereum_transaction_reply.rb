@@ -12,25 +12,25 @@ Swagger Codegen version: 2.4.13-SNAPSHOT
 
 require 'date'
 
-module SwaggerClient
-  class OnchainRawTransactionSendRequest
-    attr_accessor :coin_type
-
+module Onchain
+  class OnchainEthereumTransactionReply
     attr_accessor :tx
+
+    attr_accessor :to_sign
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'coin_type' => :'coin_type',
-        :'tx' => :'tx'
+        :'tx' => :'tx',
+        :'to_sign' => :'to_sign'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'coin_type' => :'OnchainCoinType',
-        :'tx' => :'String'
+        :'tx' => :'String',
+        :'to_sign' => :'String'
       }
     end
 
@@ -42,12 +42,12 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'coin_type')
-        self.coin_type = attributes[:'coin_type']
-      end
-
       if attributes.has_key?(:'tx')
         self.tx = attributes[:'tx']
+      end
+
+      if attributes.has_key?(:'to_sign')
+        self.to_sign = attributes[:'to_sign']
       end
     end
 
@@ -59,6 +59,10 @@ module SwaggerClient
         invalid_properties.push('invalid value for "tx", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.')
       end
 
+      if !@to_sign.nil? && @to_sign !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
+        invalid_properties.push('invalid value for "to_sign", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.')
+      end
+
       invalid_properties
     end
 
@@ -66,6 +70,7 @@ module SwaggerClient
     # @return true if the model is valid
     def valid?
       return false if !@tx.nil? && @tx !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
+      return false if !@to_sign.nil? && @to_sign !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
       true
     end
 
@@ -79,13 +84,23 @@ module SwaggerClient
       @tx = tx
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] to_sign Value to be assigned
+    def to_sign=(to_sign)
+      if !to_sign.nil? && to_sign !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
+        fail ArgumentError, 'invalid value for "to_sign", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.'
+      end
+
+      @to_sign = to_sign
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          coin_type == o.coin_type &&
-          tx == o.tx
+          tx == o.tx &&
+          to_sign == o.to_sign
     end
 
     # @see the `==` method
@@ -97,7 +112,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [coin_type, tx].hash
+      [tx, to_sign].hash
     end
 
     # Builds the object from hash
@@ -157,7 +172,7 @@ module SwaggerClient
           end
         end
       else # model
-        temp_model = SwaggerClient.const_get(type).new
+        temp_model = Onchain.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

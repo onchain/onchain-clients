@@ -1,4 +1,4 @@
-# SwaggerClient::ProtobufAny
+# Onchain::ProtobufAny
 
 ## Properties
 Name | Type | Description | Notes

@@ -12,33 +12,25 @@ Swagger Codegen version: 2.4.13-SNAPSHOT
 
 require 'date'
 
-module SwaggerClient
-  class OnchainHashToSign
-    attr_accessor :input_index
+module Onchain
+  class OnchainRawTransactionSendRequest
+    attr_accessor :coin_type
 
-    attr_accessor :public_key
-
-    attr_accessor :hash_to_sign
-
-    attr_accessor :signature
+    attr_accessor :tx
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'input_index' => :'input_index',
-        :'public_key' => :'public_key',
-        :'hash_to_sign' => :'hash_to_sign',
-        :'signature' => :'signature'
+        :'coin_type' => :'coin_type',
+        :'tx' => :'tx'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'input_index' => :'Integer',
-        :'public_key' => :'String',
-        :'hash_to_sign' => :'String',
-        :'signature' => :'String'
+        :'coin_type' => :'OnchainCoinType',
+        :'tx' => :'String'
       }
     end
 
@@ -50,20 +42,12 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'input_index')
-        self.input_index = attributes[:'input_index']
+      if attributes.has_key?(:'coin_type')
+        self.coin_type = attributes[:'coin_type']
       end
 
-      if attributes.has_key?(:'public_key')
-        self.public_key = attributes[:'public_key']
-      end
-
-      if attributes.has_key?(:'hash_to_sign')
-        self.hash_to_sign = attributes[:'hash_to_sign']
-      end
-
-      if attributes.has_key?(:'signature')
-        self.signature = attributes[:'signature']
+      if attributes.has_key?(:'tx')
+        self.tx = attributes[:'tx']
       end
     end
 
@@ -71,16 +55,8 @@ module SwaggerClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@public_key.nil? && @public_key !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
-        invalid_properties.push('invalid value for "public_key", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.')
-      end
-
-      if !@hash_to_sign.nil? && @hash_to_sign !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
-        invalid_properties.push('invalid value for "hash_to_sign", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.')
-      end
-
-      if !@signature.nil? && @signature !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
-        invalid_properties.push('invalid value for "signature", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.')
+      if !@tx.nil? && @tx !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
+        invalid_properties.push('invalid value for "tx", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.')
       end
 
       invalid_properties
@@ -89,40 +65,18 @@ module SwaggerClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@public_key.nil? && @public_key !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
-      return false if !@hash_to_sign.nil? && @hash_to_sign !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
-      return false if !@signature.nil? && @signature !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
+      return false if !@tx.nil? && @tx !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] public_key Value to be assigned
-    def public_key=(public_key)
-      if !public_key.nil? && public_key !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
-        fail ArgumentError, 'invalid value for "public_key", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.'
+    # @param [Object] tx Value to be assigned
+    def tx=(tx)
+      if !tx.nil? && tx !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
+        fail ArgumentError, 'invalid value for "tx", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.'
       end
 
-      @public_key = public_key
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] hash_to_sign Value to be assigned
-    def hash_to_sign=(hash_to_sign)
-      if !hash_to_sign.nil? && hash_to_sign !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
-        fail ArgumentError, 'invalid value for "hash_to_sign", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.'
-      end
-
-      @hash_to_sign = hash_to_sign
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] signature Value to be assigned
-    def signature=(signature)
-      if !signature.nil? && signature !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
-        fail ArgumentError, 'invalid value for "signature", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.'
-      end
-
-      @signature = signature
+      @tx = tx
     end
 
     # Checks equality by comparing each attribute.
@@ -130,10 +84,8 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          input_index == o.input_index &&
-          public_key == o.public_key &&
-          hash_to_sign == o.hash_to_sign &&
-          signature == o.signature
+          coin_type == o.coin_type &&
+          tx == o.tx
     end
 
     # @see the `==` method
@@ -145,7 +97,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [input_index, public_key, hash_to_sign, signature].hash
+      [coin_type, tx].hash
     end
 
     # Builds the object from hash
@@ -205,7 +157,7 @@ module SwaggerClient
           end
         end
       else # model
-        temp_model = SwaggerClient.const_get(type).new
+        temp_model = Onchain.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

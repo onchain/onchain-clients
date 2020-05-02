@@ -10,6 +10,6 @@ Swagger Codegen version: 2.4.13-SNAPSHOT
 
 =end
 
-module SwaggerClient
-  VERSION = '1.0.1'
+module Onchain
+  VERSION = '1.1.2'
 end

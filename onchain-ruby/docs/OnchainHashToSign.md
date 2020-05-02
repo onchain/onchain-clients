@@ -1,4 +1,4 @@
-# SwaggerClient::OnchainHashToSign
+# Onchain::OnchainHashToSign
 
 ## Properties
 Name | Type | Description | Notes

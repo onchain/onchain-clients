@@ -12,25 +12,21 @@ Swagger Codegen version: 2.4.13-SNAPSHOT
 
 require 'date'
 
-module SwaggerClient
-  class OnchainEthereumTransactionReply
-    attr_accessor :tx
-
-    attr_accessor :to_sign
+module Onchain
+  class OnchainTransactionSendReply
+    attr_accessor :tx_hash
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'tx' => :'tx',
-        :'to_sign' => :'to_sign'
+        :'tx_hash' => :'tx_hash'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'tx' => :'String',
-        :'to_sign' => :'String'
+        :'tx_hash' => :'String'
       }
     end
 
@@ -42,12 +38,8 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'tx')
-        self.tx = attributes[:'tx']
-      end
-
-      if attributes.has_key?(:'to_sign')
-        self.to_sign = attributes[:'to_sign']
+      if attributes.has_key?(:'tx_hash')
+        self.tx_hash = attributes[:'tx_hash']
       end
     end
 
@@ -55,12 +47,8 @@ module SwaggerClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@tx.nil? && @tx !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
-        invalid_properties.push('invalid value for "tx", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.')
-      end
-
-      if !@to_sign.nil? && @to_sign !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
-        invalid_properties.push('invalid value for "to_sign", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.')
+      if !@tx_hash.nil? && @tx_hash !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
+        invalid_properties.push('invalid value for "tx_hash", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.')
       end
 
       invalid_properties
@@ -69,29 +57,18 @@ module SwaggerClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@tx.nil? && @tx !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
-      return false if !@to_sign.nil? && @to_sign !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
+      return false if !@tx_hash.nil? && @tx_hash !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] tx Value to be assigned
-    def tx=(tx)
-      if !tx.nil? && tx !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
-        fail ArgumentError, 'invalid value for "tx", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.'
+    # @param [Object] tx_hash Value to be assigned
+    def tx_hash=(tx_hash)
+      if !tx_hash.nil? && tx_hash !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
+        fail ArgumentError, 'invalid value for "tx_hash", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.'
       end
 
-      @tx = tx
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] to_sign Value to be assigned
-    def to_sign=(to_sign)
-      if !to_sign.nil? && to_sign !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
-        fail ArgumentError, 'invalid value for "to_sign", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.'
-      end
-
-      @to_sign = to_sign
+      @tx_hash = tx_hash
     end
 
     # Checks equality by comparing each attribute.
@@ -99,8 +76,7 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          tx == o.tx &&
-          to_sign == o.to_sign
+          tx_hash == o.tx_hash
     end
 
     # @see the `==` method
@@ -112,7 +88,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [tx, to_sign].hash
+      [tx_hash].hash
     end
 
     # Builds the object from hash
@@ -172,7 +148,7 @@ module SwaggerClient
           end
         end
       else # model
-        temp_model = SwaggerClient.const_get(type).new
+        temp_model = Onchain.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

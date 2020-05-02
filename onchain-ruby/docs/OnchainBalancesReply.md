@@ -1,8 +1,9 @@
-# SwaggerClient::OnchainBalancesReply
+# Onchain::OnchainBalancesReply
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**balances** | [**Array&lt;OnchainBalanceReply&gt;**](OnchainBalanceReply.md) |  | [optional] 
+**addresses** | [**Array&lt;OnchainBalanceAddressReply&gt;**](OnchainBalanceAddressReply.md) |  | [optional] 
+**totals** | [**OnchainBalanceReply**](OnchainBalanceReply.md) |  | [optional] 
 
 

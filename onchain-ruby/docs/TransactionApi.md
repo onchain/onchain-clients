@@ -1,4 +1,4 @@
-# SwaggerClient::TransactionApi
+# Onchain::TransactionApi
 
 All URIs are relative to *https://localhost*
 
@@ -17,19 +17,19 @@ Method | HTTP request | Description
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'onchain'
 
-api_instance = SwaggerClient::TransactionApi.new
+api_instance = Onchain::TransactionApi.new
 
 coin_type = 'coin_type_example' # String | 
 
-body = SwaggerClient::OnchainTransactionRequest.new # OnchainTransactionRequest | 
+body = Onchain::OnchainTransactionRequest.new # OnchainTransactionRequest | 
 
 
 begin
   result = api_instance.transaction_create_transaction(coin_type, body)
   p result
-rescue SwaggerClient::ApiError => e
+rescue Onchain::ApiError => e
   puts "Exception when calling TransactionApi->transaction_create_transaction: #{e}"
 end
 ```
@@ -64,19 +64,19 @@ No authorization required
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'onchain'
 
-api_instance = SwaggerClient::TransactionApi.new
+api_instance = Onchain::TransactionApi.new
 
 coin_type = 'coin_type_example' # String | 
 
-body = SwaggerClient::OnchainRawTransactionSendRequest.new # OnchainRawTransactionSendRequest | 
+body = Onchain::OnchainRawTransactionSendRequest.new # OnchainRawTransactionSendRequest | 
 
 
 begin
   result = api_instance.transaction_send_raw(coin_type, body)
   p result
-rescue SwaggerClient::ApiError => e
+rescue Onchain::ApiError => e
   puts "Exception when calling TransactionApi->transaction_send_raw: #{e}"
 end
 ```
@@ -111,19 +111,19 @@ No authorization required
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'onchain'
 
-api_instance = SwaggerClient::TransactionApi.new
+api_instance = Onchain::TransactionApi.new
 
 coin_type = 'coin_type_example' # String | 
 
-body = SwaggerClient::OnchainTransactionSendRequest.new # OnchainTransactionSendRequest | 
+body = Onchain::OnchainTransactionSendRequest.new # OnchainTransactionSendRequest | 
 
 
 begin
   result = api_instance.transaction_sign_and_send(coin_type, body)
   p result
-rescue SwaggerClient::ApiError => e
+rescue Onchain::ApiError => e
   puts "Exception when calling TransactionApi->transaction_sign_and_send: #{e}"
 end
 ```

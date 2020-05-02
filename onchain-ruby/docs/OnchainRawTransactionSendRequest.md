@@ -1,4 +1,4 @@
-# SwaggerClient::OnchainRawTransactionSendRequest
+# Onchain::OnchainRawTransactionSendRequest
 
 ## Properties
 Name | Type | Description | Notes

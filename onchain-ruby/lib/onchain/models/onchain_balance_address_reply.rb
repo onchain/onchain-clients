@@ -12,21 +12,41 @@ Swagger Codegen version: 2.4.13-SNAPSHOT
 
 require 'date'
 
-module SwaggerClient
-  class OnchainTransactionSendReply
-    attr_accessor :tx_hash
+module Onchain
+  class OnchainBalanceAddressReply
+    attr_accessor :address
+
+    attr_accessor :usd_balance
+
+    attr_accessor :balance
+
+    attr_accessor :unconfirmed_balance
+
+    attr_accessor :human_balance
+
+    attr_accessor :human_unconfirmed_balance
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'tx_hash' => :'tx_hash'
+        :'address' => :'address',
+        :'usd_balance' => :'usd_balance',
+        :'balance' => :'balance',
+        :'unconfirmed_balance' => :'unconfirmed_balance',
+        :'human_balance' => :'human_balance',
+        :'human_unconfirmed_balance' => :'human_unconfirmed_balance'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'tx_hash' => :'String'
+        :'address' => :'String',
+        :'usd_balance' => :'Float',
+        :'balance' => :'String',
+        :'unconfirmed_balance' => :'String',
+        :'human_balance' => :'Float',
+        :'human_unconfirmed_balance' => :'Float'
       }
     end
 
@@ -38,8 +58,28 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'tx_hash')
-        self.tx_hash = attributes[:'tx_hash']
+      if attributes.has_key?(:'address')
+        self.address = attributes[:'address']
+      end
+
+      if attributes.has_key?(:'usd_balance')
+        self.usd_balance = attributes[:'usd_balance']
+      end
+
+      if attributes.has_key?(:'balance')
+        self.balance = attributes[:'balance']
+      end
+
+      if attributes.has_key?(:'unconfirmed_balance')
+        self.unconfirmed_balance = attributes[:'unconfirmed_balance']
+      end
+
+      if attributes.has_key?(:'human_balance')
+        self.human_balance = attributes[:'human_balance']
+      end
+
+      if attributes.has_key?(:'human_unconfirmed_balance')
+        self.human_unconfirmed_balance = attributes[:'human_unconfirmed_balance']
       end
     end
 
@@ -47,28 +87,13 @@ module SwaggerClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@tx_hash.nil? && @tx_hash !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
-        invalid_properties.push('invalid value for "tx_hash", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@tx_hash.nil? && @tx_hash !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] tx_hash Value to be assigned
-    def tx_hash=(tx_hash)
-      if !tx_hash.nil? && tx_hash !~ Regexp.new(/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/)
-        fail ArgumentError, 'invalid value for "tx_hash", must conform to the pattern /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/.'
-      end
-
-      @tx_hash = tx_hash
     end
 
     # Checks equality by comparing each attribute.
@@ -76,7 +101,12 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          tx_hash == o.tx_hash
+          address == o.address &&
+          usd_balance == o.usd_balance &&
+          balance == o.balance &&
+          unconfirmed_balance == o.unconfirmed_balance &&
+          human_balance == o.human_balance &&
+          human_unconfirmed_balance == o.human_unconfirmed_balance
     end
 
     # @see the `==` method
@@ -88,7 +118,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [tx_hash].hash
+      [address, usd_balance, balance, unconfirmed_balance, human_balance, human_unconfirmed_balance].hash
     end
 
     # Builds the object from hash
@@ -148,7 +178,7 @@ module SwaggerClient
           end
         end
       else # model
-        temp_model = SwaggerClient.const_get(type).new
+        temp_model = Onchain.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

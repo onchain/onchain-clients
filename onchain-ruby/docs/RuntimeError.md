@@ -1,4 +1,4 @@
-# SwaggerClient::RuntimeError
+# Onchain::RuntimeError
 
 ## Properties
 Name | Type | Description | Notes

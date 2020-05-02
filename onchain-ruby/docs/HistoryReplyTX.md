@@ -1,4 +1,4 @@
-# SwaggerClient::HistoryReplyTX
+# Onchain::HistoryReplyTX
 
 ## Properties
 Name | Type | Description | Notes

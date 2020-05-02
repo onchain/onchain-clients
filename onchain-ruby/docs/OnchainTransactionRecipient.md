@@ -1,4 +1,4 @@
-# SwaggerClient::OnchainTransactionRecipient
+# Onchain::OnchainTransactionRecipient
 
 ## Properties
 Name | Type | Description | Notes

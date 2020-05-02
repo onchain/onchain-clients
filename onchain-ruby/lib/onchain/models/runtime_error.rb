@@ -12,37 +12,33 @@ Swagger Codegen version: 2.4.13-SNAPSHOT
 
 require 'date'
 
-module SwaggerClient
-  class OnchainBalanceReply
-    attr_accessor :usd_balance
+module Onchain
+  class RuntimeError
+    attr_accessor :error
 
-    attr_accessor :balance
+    attr_accessor :code
 
-    attr_accessor :unconfirmed_balance
+    attr_accessor :message
 
-    attr_accessor :human_balance
-
-    attr_accessor :human_unconfirmed_balance
+    attr_accessor :details
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'usd_balance' => :'usd_balance',
-        :'balance' => :'balance',
-        :'unconfirmed_balance' => :'unconfirmed_balance',
-        :'human_balance' => :'human_balance',
-        :'human_unconfirmed_balance' => :'human_unconfirmed_balance'
+        :'error' => :'error',
+        :'code' => :'code',
+        :'message' => :'message',
+        :'details' => :'details'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'usd_balance' => :'Float',
-        :'balance' => :'String',
-        :'unconfirmed_balance' => :'String',
-        :'human_balance' => :'Float',
-        :'human_unconfirmed_balance' => :'Float'
+        :'error' => :'String',
+        :'code' => :'Integer',
+        :'message' => :'String',
+        :'details' => :'Array<ProtobufAny>'
       }
     end
 
@@ -54,24 +50,22 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'usd_balance')
-        self.usd_balance = attributes[:'usd_balance']
+      if attributes.has_key?(:'error')
+        self.error = attributes[:'error']
       end
 
-      if attributes.has_key?(:'balance')
-        self.balance = attributes[:'balance']
+      if attributes.has_key?(:'code')
+        self.code = attributes[:'code']
       end
 
-      if attributes.has_key?(:'unconfirmed_balance')
-        self.unconfirmed_balance = attributes[:'unconfirmed_balance']
+      if attributes.has_key?(:'message')
+        self.message = attributes[:'message']
       end
 
-      if attributes.has_key?(:'human_balance')
-        self.human_balance = attributes[:'human_balance']
-      end
-
-      if attributes.has_key?(:'human_unconfirmed_balance')
-        self.human_unconfirmed_balance = attributes[:'human_unconfirmed_balance']
+      if attributes.has_key?(:'details')
+        if (value = attributes[:'details']).is_a?(Array)
+          self.details = value
+        end
       end
     end
 
@@ -93,11 +87,10 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          usd_balance == o.usd_balance &&
-          balance == o.balance &&
-          unconfirmed_balance == o.unconfirmed_balance &&
-          human_balance == o.human_balance &&
-          human_unconfirmed_balance == o.human_unconfirmed_balance
+          error == o.error &&
+          code == o.code &&
+          message == o.message &&
+          details == o.details
     end
 
     # @see the `==` method
@@ -109,7 +102,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [usd_balance, balance, unconfirmed_balance, human_balance, human_unconfirmed_balance].hash
+      [error, code, message, details].hash
     end
 
     # Builds the object from hash
@@ -169,7 +162,7 @@ module SwaggerClient
           end
         end
       else # model
-        temp_model = SwaggerClient.const_get(type).new
+        temp_model = Onchain.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

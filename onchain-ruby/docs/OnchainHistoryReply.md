@@ -1,4 +1,4 @@
-# SwaggerClient::OnchainHistoryReply
+# Onchain::OnchainHistoryReply
 
 ## Properties
 Name | Type | Description | Notes
