@@ -1,0 +1,1 @@
+Set the verison in config.json then run build.sh
