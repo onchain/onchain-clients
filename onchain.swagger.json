@@ -21,18 +21,18 @@
       "get": {
         "summary": "Get Balance",
         "description": "Returns the satoshi balance, usd balance and user viewable balance for an address. For ERC20 tokens you need to pass in the contract ID and the number of decimal places.",
-        "operationId": "Address_GetBalance",
+        "operationId": "GetBalance",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/onchainBalanceReply"
+              "$ref": "#/definitions/onchain.BalanceReply"
             }
           },
           "default": {
             "description": "An unexpected error response",
             "schema": {
-              "$ref": "#/definitions/runtimeError"
+              "$ref": "#/definitions/grpc.gateway.runtime.Error"
             }
           }
         },
@@ -74,18 +74,18 @@
       "get": {
         "summary": "Get Balances",
         "description": "Returns the satoshi balance, usd balance and user viewable balance for a set of addresses.",
-        "operationId": "Address_GetBalances",
+        "operationId": "GetBalances",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/onchainBalancesReply"
+              "$ref": "#/definitions/onchain.BalancesReply"
             }
           },
           "default": {
             "description": "An unexpected error response",
             "schema": {
-              "$ref": "#/definitions/runtimeError"
+              "$ref": "#/definitions/grpc.gateway.runtime.Error"
             }
           }
         },
@@ -131,18 +131,18 @@
       "get": {
         "summary": "Get History",
         "description": "Returns the transaction history for an address or addresses.",
-        "operationId": "Address_GetHistory",
+        "operationId": "GetHistory",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/onchainHistoryReply"
+              "$ref": "#/definitions/onchain.HistoryReply"
             }
           },
           "default": {
             "description": "An unexpected error response",
             "schema": {
-              "$ref": "#/definitions/runtimeError"
+              "$ref": "#/definitions/grpc.gateway.runtime.Error"
             }
           }
         },
@@ -186,18 +186,18 @@
     },
     "/api/address/{coin_type}/{public_key}": {
       "get": {
-        "operationId": "Address_GetNetworkAddress",
+        "operationId": "GetNetworkAddress",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/onchainAddressReply"
+              "$ref": "#/definitions/onchain.AddressReply"
             }
           },
           "default": {
             "description": "An unexpected error response",
             "schema": {
-              "$ref": "#/definitions/runtimeError"
+              "$ref": "#/definitions/grpc.gateway.runtime.Error"
             }
           }
         },
@@ -237,18 +237,18 @@
     },
     "/api/transaction/create/{coin_type}": {
       "post": {
-        "operationId": "Transaction_CreateTransaction",
+        "operationId": "CreateTransaction",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/onchainTransactionReply"
+              "$ref": "#/definitions/onchain.TransactionReply"
             }
           },
           "default": {
             "description": "An unexpected error response",
             "schema": {
-              "$ref": "#/definitions/runtimeError"
+              "$ref": "#/definitions/grpc.gateway.runtime.Error"
             }
           }
         },
@@ -278,7 +278,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/onchainTransactionRequest"
+              "$ref": "#/definitions/onchain.TransactionRequest"
             }
           }
         ],
@@ -289,18 +289,18 @@
     },
     "/api/transaction/send_raw/{coin_type}": {
       "post": {
-        "operationId": "Transaction_SendRaw",
+        "operationId": "SendRaw",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/onchainTransactionSendReply"
+              "$ref": "#/definitions/onchain.TransactionSendReply"
             }
           },
           "default": {
             "description": "An unexpected error response",
             "schema": {
-              "$ref": "#/definitions/runtimeError"
+              "$ref": "#/definitions/grpc.gateway.runtime.Error"
             }
           }
         },
@@ -330,7 +330,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/onchainRawTransactionSendRequest"
+              "$ref": "#/definitions/onchain.RawTransactionSendRequest"
             }
           }
         ],
@@ -341,18 +341,18 @@
     },
     "/api/transaction/sign_and_send/{coin_type}": {
       "post": {
-        "operationId": "Transaction_SignAndSend",
+        "operationId": "SignAndSend",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/onchainTransactionSendReply"
+              "$ref": "#/definitions/onchain.TransactionSendReply"
             }
           },
           "default": {
             "description": "An unexpected error response",
             "schema": {
-              "$ref": "#/definitions/runtimeError"
+              "$ref": "#/definitions/grpc.gateway.runtime.Error"
             }
           }
         },
@@ -382,7 +382,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/onchainTransactionSendRequest"
+              "$ref": "#/definitions/onchain.TransactionSendRequest"
             }
           }
         ],
@@ -393,7 +393,185 @@
     }
   },
   "definitions": {
-    "HistoryReplyTX": {
+    "google.protobuf.Any": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        },
+        "value": {
+          "type": "string",
+          "format": "byte",
+          "description": "Must be a valid serialized protocol buffer of the above specified type."
+        }
+      },
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "grpc.gateway.runtime.Error": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/google.protobuf.Any"
+          }
+        }
+      }
+    },
+    "onchain.AddressReply": {
+      "type": "object",
+      "properties": {
+        "network_address": {
+          "type": "string"
+        }
+      }
+    },
+    "onchain.BalanceAddressReply": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "usd_balance": {
+          "type": "number",
+          "format": "float"
+        },
+        "balance": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "unconfirmed_balance": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "human_balance": {
+          "type": "number",
+          "format": "double"
+        },
+        "human_unconfirmed_balance": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "onchain.BalanceReply": {
+      "type": "object",
+      "properties": {
+        "usd_balance": {
+          "type": "number",
+          "format": "float"
+        },
+        "balance": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "unconfirmed_balance": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "human_balance": {
+          "type": "number",
+          "format": "double"
+        },
+        "human_unconfirmed_balance": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "onchain.BalancesReply": {
+      "type": "object",
+      "properties": {
+        "addresses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/onchain.BalanceAddressReply"
+          }
+        },
+        "totals": {
+          "$ref": "#/definitions/onchain.BalanceReply"
+        }
+      }
+    },
+    "onchain.CoinType": {
+      "type": "string",
+      "enum": [
+        "BITCOIN",
+        "ETHEREUM",
+        "TESTNET3",
+        "BITCOIN_CASH",
+        "BITCOIN_GOLD",
+        "LITECOIN",
+        "DASH",
+        "DOGE",
+        "BITCOIN_PRIVATE",
+        "ZCASH",
+        "ZCASH_TESTNET",
+        "ZCLASSIC"
+      ],
+      "default": "BITCOIN"
+    },
+    "onchain.EthereumTransactionReply": {
+      "type": "object",
+      "properties": {
+        "tx": {
+          "type": "string",
+          "format": "byte"
+        },
+        "to_sign": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "onchain.HashToSign": {
+      "type": "object",
+      "properties": {
+        "input_index": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "public_key": {
+          "type": "string",
+          "format": "byte"
+        },
+        "hash_to_sign": {
+          "type": "string",
+          "format": "byte"
+        },
+        "signature": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "onchain.HistoryReply": {
+      "type": "object",
+      "properties": {
+        "total_txs": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "txs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/onchain.HistoryReply.TX"
+          }
+        }
+      }
+    },
+    "onchain.HistoryReply.TX": {
       "type": "object",
       "properties": {
         "confirmations": {
@@ -421,153 +599,11 @@
         }
       }
     },
-    "onchainAddressReply": {
-      "type": "object",
-      "properties": {
-        "network_address": {
-          "type": "string"
-        }
-      }
-    },
-    "onchainBalanceAddressReply": {
-      "type": "object",
-      "properties": {
-        "address": {
-          "type": "string"
-        },
-        "usd_balance": {
-          "type": "number",
-          "format": "float"
-        },
-        "balance": {
-          "type": "string",
-          "format": "uint64"
-        },
-        "unconfirmed_balance": {
-          "type": "string",
-          "format": "uint64"
-        },
-        "human_balance": {
-          "type": "number",
-          "format": "double"
-        },
-        "human_unconfirmed_balance": {
-          "type": "number",
-          "format": "double"
-        }
-      }
-    },
-    "onchainBalanceReply": {
-      "type": "object",
-      "properties": {
-        "usd_balance": {
-          "type": "number",
-          "format": "float"
-        },
-        "balance": {
-          "type": "string",
-          "format": "uint64"
-        },
-        "unconfirmed_balance": {
-          "type": "string",
-          "format": "uint64"
-        },
-        "human_balance": {
-          "type": "number",
-          "format": "double"
-        },
-        "human_unconfirmed_balance": {
-          "type": "number",
-          "format": "double"
-        }
-      }
-    },
-    "onchainBalancesReply": {
-      "type": "object",
-      "properties": {
-        "addresses": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/onchainBalanceAddressReply"
-          }
-        },
-        "totals": {
-          "$ref": "#/definitions/onchainBalanceReply"
-        }
-      }
-    },
-    "onchainCoinType": {
-      "type": "string",
-      "enum": [
-        "BITCOIN",
-        "ETHEREUM",
-        "TESTNET3",
-        "BITCOIN_CASH",
-        "BITCOIN_GOLD",
-        "LITECOIN",
-        "DASH",
-        "DOGE",
-        "BITCOIN_PRIVATE",
-        "ZCASH",
-        "ZCASH_TESTNET",
-        "ZCLASSIC"
-      ],
-      "default": "BITCOIN"
-    },
-    "onchainEthereumTransactionReply": {
-      "type": "object",
-      "properties": {
-        "tx": {
-          "type": "string",
-          "format": "byte"
-        },
-        "to_sign": {
-          "type": "string",
-          "format": "byte"
-        }
-      }
-    },
-    "onchainHashToSign": {
-      "type": "object",
-      "properties": {
-        "input_index": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "public_key": {
-          "type": "string",
-          "format": "byte"
-        },
-        "hash_to_sign": {
-          "type": "string",
-          "format": "byte"
-        },
-        "signature": {
-          "type": "string",
-          "format": "byte"
-        }
-      }
-    },
-    "onchainHistoryReply": {
-      "type": "object",
-      "properties": {
-        "total_txs": {
-          "type": "string",
-          "format": "uint64"
-        },
-        "txs": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/HistoryReplyTX"
-          }
-        }
-      }
-    },
-    "onchainRawTransactionSendRequest": {
+    "onchain.RawTransactionSendRequest": {
       "type": "object",
       "properties": {
         "coin_type": {
-          "$ref": "#/definitions/onchainCoinType"
+          "$ref": "#/definitions/onchain.CoinType"
         },
         "tx": {
           "type": "string",
@@ -575,7 +611,7 @@
         }
       }
     },
-    "onchainTransactionRecipient": {
+    "onchain.TransactionRecipient": {
       "type": "object",
       "properties": {
         "to": {
@@ -588,7 +624,7 @@
         }
       }
     },
-    "onchainTransactionReply": {
+    "onchain.TransactionReply": {
       "type": "object",
       "properties": {
         "tx": {
@@ -602,21 +638,21 @@
         "hashes_to_sign": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/onchainHashToSign"
+            "$ref": "#/definitions/onchain.HashToSign"
           }
         }
       }
     },
-    "onchainTransactionRequest": {
+    "onchain.TransactionRequest": {
       "type": "object",
       "properties": {
         "coin_type": {
-          "$ref": "#/definitions/onchainCoinType"
+          "$ref": "#/definitions/onchain.CoinType"
         },
         "recipients": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/onchainTransactionRecipient"
+            "$ref": "#/definitions/onchain.TransactionRecipient"
           }
         },
         "from": {
@@ -633,7 +669,7 @@
         }
       }
     },
-    "onchainTransactionSendReply": {
+    "onchain.TransactionSendReply": {
       "type": "object",
       "properties": {
         "tx_hash": {
@@ -642,11 +678,11 @@
         }
       }
     },
-    "onchainTransactionSendRequest": {
+    "onchain.TransactionSendRequest": {
       "type": "object",
       "properties": {
         "coin_type": {
-          "$ref": "#/definitions/onchainCoinType"
+          "$ref": "#/definitions/onchain.CoinType"
         },
         "tx": {
           "type": "string",
@@ -655,43 +691,7 @@
         "signatures": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/onchainHashToSign"
-          }
-        }
-      }
-    },
-    "protobufAny": {
-      "type": "object",
-      "properties": {
-        "type_url": {
-          "type": "string",
-          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
-        },
-        "value": {
-          "type": "string",
-          "format": "byte",
-          "description": "Must be a valid serialized protocol buffer of the above specified type."
-        }
-      },
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
-    },
-    "runtimeError": {
-      "type": "object",
-      "properties": {
-        "error": {
-          "type": "string"
-        },
-        "code": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "message": {
-          "type": "string"
-        },
-        "details": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/protobufAny"
+            "$ref": "#/definitions/onchain.HashToSign"
           }
         }
       }

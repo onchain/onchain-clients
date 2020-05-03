@@ -4,14 +4,14 @@ All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**address_get_balance**](AddressApi.md#address_get_balance) | **GET** /api/address/balance/{coin_type}/{address} | Get Balance
-[**address_get_balances**](AddressApi.md#address_get_balances) | **GET** /api/address/balances/{coin_type}/{addresses} | Get Balances
-[**address_get_history**](AddressApi.md#address_get_history) | **GET** /api/address/history/{coin_type}/{addresses} | Get History
-[**address_get_network_address**](AddressApi.md#address_get_network_address) | **GET** /api/address/{coin_type}/{public_key} | 
+[**get_balance**](AddressApi.md#get_balance) | **GET** /api/address/balance/{coin_type}/{address} | Get Balance
+[**get_balances**](AddressApi.md#get_balances) | **GET** /api/address/balances/{coin_type}/{addresses} | Get Balances
+[**get_history**](AddressApi.md#get_history) | **GET** /api/address/history/{coin_type}/{addresses} | Get History
+[**get_network_address**](AddressApi.md#get_network_address) | **GET** /api/address/{coin_type}/{public_key} | 
 
 
-# **address_get_balance**
-> OnchainBalanceReply address_get_balance(coin_type, address)
+# **get_balance**
+> BalanceReply get_balance(coin_type, address)
 
 Get Balance
 
@@ -31,10 +31,10 @@ address = 'address_example' # String | The public address to lookup
 
 begin
   #Get Balance
-  result = api_instance.address_get_balance(coin_type, address)
+  result = api_instance.get_balance(coin_type, address)
   p result
 rescue OnchainApi::ApiError => e
-  puts "Exception when calling AddressApi->address_get_balance: #{e}"
+  puts "Exception when calling AddressApi->get_balance: #{e}"
 end
 ```
 
@@ -47,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OnchainBalanceReply**](OnchainBalanceReply.md)
+[**BalanceReply**](BalanceReply.md)
 
 ### Authorization
 
@@ -60,8 +60,8 @@ No authorization required
 
 
 
-# **address_get_balances**
-> OnchainBalancesReply address_get_balances(coin_type, addresses)
+# **get_balances**
+> BalancesReply get_balances(coin_type, addresses)
 
 Get Balances
 
@@ -81,10 +81,10 @@ addresses = ['addresses_example'] # Array<String> |
 
 begin
   #Get Balances
-  result = api_instance.address_get_balances(coin_type, addresses)
+  result = api_instance.get_balances(coin_type, addresses)
   p result
 rescue OnchainApi::ApiError => e
-  puts "Exception when calling AddressApi->address_get_balances: #{e}"
+  puts "Exception when calling AddressApi->get_balances: #{e}"
 end
 ```
 
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OnchainBalancesReply**](OnchainBalancesReply.md)
+[**BalancesReply**](BalancesReply.md)
 
 ### Authorization
 
@@ -110,8 +110,8 @@ No authorization required
 
 
 
-# **address_get_history**
-> OnchainHistoryReply address_get_history(coin_type, addresses)
+# **get_history**
+> HistoryReply get_history(coin_type, addresses)
 
 Get History
 
@@ -131,10 +131,10 @@ addresses = ['addresses_example'] # Array<String> |
 
 begin
   #Get History
-  result = api_instance.address_get_history(coin_type, addresses)
+  result = api_instance.get_history(coin_type, addresses)
   p result
 rescue OnchainApi::ApiError => e
-  puts "Exception when calling AddressApi->address_get_history: #{e}"
+  puts "Exception when calling AddressApi->get_history: #{e}"
 end
 ```
 
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OnchainHistoryReply**](OnchainHistoryReply.md)
+[**HistoryReply**](HistoryReply.md)
 
 ### Authorization
 
@@ -160,8 +160,8 @@ No authorization required
 
 
 
-# **address_get_network_address**
-> OnchainAddressReply address_get_network_address(coin_type, public_key)
+# **get_network_address**
+> AddressReply get_network_address(coin_type, public_key)
 
 
 
@@ -178,10 +178,10 @@ public_key = 'B' # String |
 
 
 begin
-  result = api_instance.address_get_network_address(coin_type, public_key)
+  result = api_instance.get_network_address(coin_type, public_key)
   p result
 rescue OnchainApi::ApiError => e
-  puts "Exception when calling AddressApi->address_get_network_address: #{e}"
+  puts "Exception when calling AddressApi->get_network_address: #{e}"
 end
 ```
 
@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OnchainAddressReply**](OnchainAddressReply.md)
+[**AddressReply**](AddressReply.md)
 
 ### Authorization
 
