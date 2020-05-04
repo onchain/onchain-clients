@@ -235,6 +235,238 @@
         ]
       }
     },
+    "/api/erc20/create": {
+      "post": {
+        "operationId": "CreateTransaction",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/onchain.EthereumTransactionReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/grpc.gateway.runtime.Error"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/onchain.ERC20TransactionRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ERC20Transaction"
+        ]
+      }
+    },
+    "/api/erc20/sign_and_send": {
+      "post": {
+        "operationId": "SignAndSend",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/onchain.TransactionSendReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/grpc.gateway.runtime.Error"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/onchain.EthereumTransactionSendRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ERC20Transaction"
+        ]
+      }
+    },
+    "/api/ethereum/create": {
+      "post": {
+        "operationId": "CreateTransaction",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/onchain.EthereumTransactionReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/grpc.gateway.runtime.Error"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/onchain.EthereumTransactionRequest"
+            }
+          }
+        ],
+        "tags": [
+          "EthereumTransaction"
+        ]
+      }
+    },
+    "/api/ethereum/sign_and_send": {
+      "post": {
+        "operationId": "SignAndSend",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/onchain.TransactionSendReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/grpc.gateway.runtime.Error"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/onchain.EthereumTransactionSendRequest"
+            }
+          }
+        ],
+        "tags": [
+          "EthereumTransaction"
+        ]
+      }
+    },
+    "/api/multi_sig/create/{coin_type}": {
+      "post": {
+        "operationId": "CreateTransaction",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/onchain.TransactionReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/grpc.gateway.runtime.Error"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "coin_type",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "BITCOIN",
+              "ETHEREUM",
+              "TESTNET3",
+              "BITCOIN_CASH",
+              "BITCOIN_GOLD",
+              "LITECOIN",
+              "DASH",
+              "DOGE",
+              "BITCOIN_PRIVATE",
+              "ZCASH",
+              "ZCASH_TESTNET",
+              "ZCLASSIC"
+            ]
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/onchain.MultiSigTransactionRequest"
+            }
+          }
+        ],
+        "tags": [
+          "MultiSigTransaction"
+        ]
+      }
+    },
+    "/api/multi_sig/sign_and_send/{coin_type}": {
+      "post": {
+        "operationId": "SignAndSend",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/onchain.TransactionSendReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/grpc.gateway.runtime.Error"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "coin_type",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "BITCOIN",
+              "ETHEREUM",
+              "TESTNET3",
+              "BITCOIN_CASH",
+              "BITCOIN_GOLD",
+              "LITECOIN",
+              "DASH",
+              "DOGE",
+              "BITCOIN_PRIVATE",
+              "ZCASH",
+              "ZCASH_TESTNET",
+              "ZCLASSIC"
+            ]
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/onchain.TransactionSendRequest"
+            }
+          }
+        ],
+        "tags": [
+          "MultiSigTransaction"
+        ]
+      }
+    },
     "/api/transaction/create/{coin_type}": {
       "post": {
         "operationId": "CreateTransaction",
@@ -522,6 +754,33 @@
       ],
       "default": "BITCOIN"
     },
+    "onchain.ERC20TransactionRequest": {
+      "type": "object",
+      "properties": {
+        "to": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string",
+          "description": "The amount we wish to send in GWEI. We have to use a string to store this as\nEthereum stores amounts in potentially nunbers with 256 bits."
+        },
+        "gas_price": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "gas_limit": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "contract_id": {
+          "type": "string"
+        },
+        "decimal_places": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
     "onchain.EthereumTransactionReply": {
       "type": "object",
       "properties": {
@@ -530,6 +789,52 @@
           "format": "byte"
         },
         "to_sign": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "onchain.EthereumTransactionRequest": {
+      "type": "object",
+      "properties": {
+        "to": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string",
+          "format": "byte",
+          "title": "The from address is supplied as the full public key that corresponds to\nthe ECDCA private key.\ne.g. 03df154ebfcf29d29cc10d5c2565018bce2d9edbab267c31d2caf44a63056cf99f"
+        },
+        "amount": {
+          "type": "string",
+          "description": "The amount we wish to send in GWEI. We have to use a string to store this as\nEthereum stores amounts in potentially nunbers with 256 bits."
+        },
+        "gas_price": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "gas_limit": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "onchain.EthereumTransactionSendRequest": {
+      "type": "object",
+      "properties": {
+        "tx": {
+          "type": "string",
+          "format": "byte"
+        },
+        "v": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "r": {
+          "type": "string",
+          "format": "byte"
+        },
+        "s": {
           "type": "string",
           "format": "byte"
         }
@@ -596,6 +901,36 @@
         "human_amount": {
           "type": "number",
           "format": "float"
+        }
+      }
+    },
+    "onchain.MultiSigTransactionRequest": {
+      "type": "object",
+      "properties": {
+        "coin_type": {
+          "$ref": "#/definitions/onchain.CoinType"
+        },
+        "recipients": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/onchain.TransactionRecipient"
+          }
+        },
+        "public_keys": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "byte"
+          },
+          "title": "The from address is supplied as the full public key that corresponds to\nthe ECDCA private key.\ne.g. 03df154ebfcf29d29cc10d5c2565018bce2d9edbab267c31d2caf44a63056cf99f"
+        },
+        "miners_fee": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "number_of_required_signatures": {
+          "type": "string",
+          "format": "uint64"
         }
       }
     },
