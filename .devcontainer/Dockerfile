@@ -21,6 +21,10 @@ RUN apt-get update \
     && apt-get update \
     && apt-get install -y docker-ce-cli
 
+RUN apt-get install -y ruby-full libffi-dev build-essential
+
+RUN gem install bundler rspec
+
 # https://starship.rs/
 RUN curl -fsSL https://starship.rs/install.sh | bash -s -- --force
 

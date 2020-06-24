@@ -54,7 +54,9 @@ describe 'AddressApi' do
   # @return [BalancesReply]
   describe 'get_balances test' do
     it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+      bals = @instance.get_balances(OnchainApi::Coin::BITCOIN, '1STRonGxnFTeJiA7pgyneKknR29AwBM77,1HT7xU2Ngenf7D4yocz2SAcnNLW7rK8d4E')
+      
+      expect(bals.addresses.size).to be > 0
     end
   end
 
