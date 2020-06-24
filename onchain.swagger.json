@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "OnChain Crypto Currency API",
-    "description": "We need to add a proper description.",
+    "description": "Swagger defrinition for this API is available at https://onchain.io/docs/onchain.swagger.json",
     "version": "1.0",
     "contact": {
       "name": "onchain.io",
@@ -803,7 +803,7 @@
         "from": {
           "type": "string",
           "format": "byte",
-          "title": "The from address is supplied as the full public key that corresponds to\nthe ECDCA private key.\ne.g. 03df154ebfcf29d29cc10d5c2565018bce2d9edbab267c31d2caf44a63056cf99f"
+          "title": "The from address is supplied as the full UNCOMPRESSED public key that corresponds to\nthe ECDCA private key.\ne.g. 04ab4284e59a1724f1f0f58114abfc4f34a98478972d5b8c67608a67a10e188b9a13764912b2782.....\nWe use the from address to get the nonce"
         },
         "amount": {
           "type": "string",
@@ -1030,6 +1030,13 @@
           }
         }
       }
+    }
+  },
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "X-API-KEY",
+      "in": "header"
     }
   }
 }
