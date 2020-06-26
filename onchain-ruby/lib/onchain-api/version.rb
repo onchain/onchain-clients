@@ -11,5 +11,5 @@ Swagger Codegen version: 2.4.14
 =end
 
 module OnchainApi
-  VERSION = '1.1.5'
+  VERSION = '1.1.6'
 end
