@@ -3,7 +3,7 @@
 =begin
 #OnChain Crypto Currency API
 
-#Swagger defrinition for this API is available at https://io/docs/swagger.json
+#Swagger definition for this API is available at https://io/docs/swagger.json
 
 OpenAPI spec version: 1.0
 Contact: support@io
@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.email       = ["support@io"]
   s.homepage    = "https://github.com/swagger-api/swagger-codegen"
   s.summary     = "OnChain Crypto Currency API Ruby Gem"
-  s.description = "Swagger defrinition for this API is available at https://io/docs/swagger.json"
+  s.description = "Swagger definition for this API is available at https://io/docs/swagger.json"
   s.license     = "Unlicense"
   s.required_ruby_version = ">= 1.9"
 

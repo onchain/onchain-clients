@@ -1,7 +1,7 @@
 =begin
 #OnChain Crypto Currency API
 
-#Swagger defrinition for this API is available at https://io/docs/swagger.json
+#Swagger definition for this API is available at https://io/docs/swagger.json
 
 OpenAPI spec version: 1.0
 Contact: support@io
@@ -18,6 +18,9 @@ require 'json'
 # Please update as you see appropriate
 describe 'AddressApi' do
   before do
+    OnchainApi.configure do |config|
+      config.api_key['X-API-KEY'] = 'ruby-testing'
+    end
     # run before each test
     @instance = OnchainApi::AddressApi.new
   end
@@ -41,6 +44,9 @@ describe 'AddressApi' do
   # @return [BalanceReply]
   describe 'get_balance test' do
     it 'should work' do
+
+    
+      bal = @instance.get_balance(OnchainApi::CoinType::BITCOIN, '16KBLs5NVpUcrhmcC7eifHuSJjKLufApak')
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
@@ -54,9 +60,7 @@ describe 'AddressApi' do
   # @return [BalancesReply]
   describe 'get_balances test' do
     it 'should work' do
-      bals = @instance.get_balances(OnchainApi::Coin::BITCOIN, '1STRonGxnFTeJiA7pgyneKknR29AwBM77,1HT7xU2Ngenf7D4yocz2SAcnNLW7rK8d4E')
-      
-      expect(bals.addresses.size).to be > 0
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 

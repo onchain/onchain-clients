@@ -1,6 +1,6 @@
 # OnchainApi::AddressApi
 
-All URIs are relative to *https://localhost*
+All URIs are relative to *https://onchain.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -21,6 +21,13 @@ Returns the satoshi balance, usd balance and user viewable balance for an addres
 ```ruby
 # load the gem
 require 'onchain-api'
+# setup authorization
+OnchainApi.configure do |config|
+  # Configure API key authorization: ApiKeyAuth
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+end
 
 api_instance = OnchainApi::AddressApi.new
 
@@ -51,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -71,6 +78,13 @@ Returns the satoshi balance, usd balance and user viewable balance for a set of 
 ```ruby
 # load the gem
 require 'onchain-api'
+# setup authorization
+OnchainApi.configure do |config|
+  # Configure API key authorization: ApiKeyAuth
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+end
 
 api_instance = OnchainApi::AddressApi.new
 
@@ -101,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -121,6 +135,13 @@ Returns the transaction history for an address or addresses.
 ```ruby
 # load the gem
 require 'onchain-api'
+# setup authorization
+OnchainApi.configure do |config|
+  # Configure API key authorization: ApiKeyAuth
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+end
 
 api_instance = OnchainApi::AddressApi.new
 
@@ -151,7 +172,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -169,6 +190,13 @@ No authorization required
 ```ruby
 # load the gem
 require 'onchain-api'
+# setup authorization
+OnchainApi.configure do |config|
+  # Configure API key authorization: ApiKeyAuth
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+end
 
 api_instance = OnchainApi::AddressApi.new
 
@@ -198,7 +226,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

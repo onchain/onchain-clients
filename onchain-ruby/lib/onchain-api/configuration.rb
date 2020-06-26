@@ -1,7 +1,7 @@
 =begin
 #OnChain Crypto Currency API
 
-#Swagger defrinition for this API is available at https://io/docs/swagger.json
+#Swagger definition for this API is available at https://io/docs/swagger.json
 
 OpenAPI spec version: 1.0
 Contact: support@io
@@ -129,7 +129,7 @@ module OnchainApi
 
     def initialize
       @scheme = 'https'
-      @host = ''
+      @host = 'onchain.io'
       @base_path = ''
       @api_key = {}
       @api_key_prefix = {}
@@ -196,7 +196,7 @@ module OnchainApi
     # Returns Auth Settings hash for api client.
     def auth_settings
       {
-        'api_key' =>
+        'ApiKeyAuth' =>
           {
             type: 'api_key',
             in: 'header',

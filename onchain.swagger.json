@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "OnChain Crypto Currency API",
-    "description": "Swagger defrinition for this API is available at https://onchain.io/docs/onchain.swagger.json",
+    "description": "Swagger definition for this API is available at https://onchain.io/docs/onchain.swagger.json",
     "version": "1.0",
     "contact": {
       "name": "onchain.io",
@@ -10,6 +10,8 @@
       "email": "support@onchain.io"
     }
   },
+  "host": "onchain.io",
+  "schemes": ["https"],
   "consumes": [
     "application/json"
   ],
@@ -1033,10 +1035,15 @@
     }
   },
   "securityDefinitions": {
-    "api_key": {
+    "ApiKeyAuth": {
       "type": "apiKey",
       "name": "X-API-KEY",
       "in": "header"
     }
-  }
+  },
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ]
 }

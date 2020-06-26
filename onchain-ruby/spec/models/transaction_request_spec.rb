@@ -1,7 +1,7 @@
 =begin
 #OnChain Crypto Currency API
 
-#Swagger defrinition for this API is available at https://io/docs/swagger.json
+#Swagger definition for this API is available at https://io/docs/swagger.json
 
 OpenAPI spec version: 1.0
 Contact: support@io

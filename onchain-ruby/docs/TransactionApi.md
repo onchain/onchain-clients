@@ -1,6 +1,6 @@
 # OnchainApi::TransactionApi
 
-All URIs are relative to *https://localhost*
+All URIs are relative to *https://onchain.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -18,6 +18,13 @@ Method | HTTP request | Description
 ```ruby
 # load the gem
 require 'onchain-api'
+# setup authorization
+OnchainApi.configure do |config|
+  # Configure API key authorization: ApiKeyAuth
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+end
 
 api_instance = OnchainApi::TransactionApi.new
 
@@ -47,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -65,6 +72,13 @@ No authorization required
 ```ruby
 # load the gem
 require 'onchain-api'
+# setup authorization
+OnchainApi.configure do |config|
+  # Configure API key authorization: ApiKeyAuth
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+end
 
 api_instance = OnchainApi::TransactionApi.new
 
@@ -94,7 +108,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -112,6 +126,13 @@ No authorization required
 ```ruby
 # load the gem
 require 'onchain-api'
+# setup authorization
+OnchainApi.configure do |config|
+  # Configure API key authorization: ApiKeyAuth
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+end
 
 api_instance = OnchainApi::TransactionApi.new
 
@@ -141,7 +162,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

@@ -1,7 +1,7 @@
 =begin
 #OnChain Crypto Currency API
 
-#Swagger defrinition for this API is available at https://io/docs/swagger.json
+#Swagger definition for this API is available at https://io/docs/swagger.json
 
 OpenAPI spec version: 1.0
 Contact: support@io
@@ -70,7 +70,7 @@ module OnchainApi
 
       # http body (model)
       post_body = nil
-      auth_names = []
+      auth_names = ['ApiKeyAuth']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
@@ -138,7 +138,7 @@ module OnchainApi
 
       # http body (model)
       post_body = nil
-      auth_names = []
+      auth_names = ['ApiKeyAuth']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
@@ -206,7 +206,7 @@ module OnchainApi
 
       # http body (model)
       post_body = nil
-      auth_names = []
+      auth_names = ['ApiKeyAuth']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
@@ -266,7 +266,7 @@ module OnchainApi
 
       # http body (model)
       post_body = nil
-      auth_names = []
+      auth_names = ['ApiKeyAuth']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
