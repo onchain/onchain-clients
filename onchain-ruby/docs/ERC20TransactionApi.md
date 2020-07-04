@@ -1,6 +1,6 @@
 # OnchainApi::ERC20TransactionApi
 
-All URIs are relative to *https://onchain.io*
+All URIs are relative to *http://onchain.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -8,12 +8,15 @@ Method | HTTP request | Description
 [**sign_and_send**](ERC20TransactionApi.md#sign_and_send) | **POST** /api/erc20/sign_and_send | 
 
 
-# **create_transaction**
+
+## create_transaction
+
 > EthereumTransactionReply create_transaction(body)
 
 
 
 ### Example
+
 ```ruby
 # load the gem
 require 'onchain-api'
@@ -26,9 +29,7 @@ OnchainApi.configure do |config|
 end
 
 api_instance = OnchainApi::ERC20TransactionApi.new
-
 body = OnchainApi::ERC20TransactionRequest.new # ERC20TransactionRequest | 
-
 
 begin
   result = api_instance.create_transaction(body)
@@ -39,6 +40,7 @@ end
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -54,17 +56,18 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## sign_and_send
 
-# **sign_and_send**
 > TransactionSendReply sign_and_send(body)
 
 
 
 ### Example
+
 ```ruby
 # load the gem
 require 'onchain-api'
@@ -77,9 +80,7 @@ OnchainApi.configure do |config|
 end
 
 api_instance = OnchainApi::ERC20TransactionApi.new
-
 body = OnchainApi::EthereumTransactionSendRequest.new # EthereumTransactionSendRequest | 
-
 
 begin
   result = api_instance.sign_and_send(body)
@@ -90,6 +91,7 @@ end
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -105,8 +107,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
+- **Content-Type**: application/json
+- **Accept**: application/json
 
