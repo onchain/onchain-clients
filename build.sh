@@ -1,4 +1,4 @@
-#curl -O https://onchain.io/docs/onchain.swagger.json
+curl -O https://onchain.io/docs/onchain.swagger.json
 
 # remove the onchain. before all models names or all modes get called onchainBalance etc.
 sed 's/onchain\.//g' onchain.swagger.json > onchain.no-packages.json
