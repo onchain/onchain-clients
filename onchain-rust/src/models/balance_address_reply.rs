@@ -18,9 +18,9 @@ pub struct BalanceAddressReply {
     #[serde(rename = "usd_balance", skip_serializing_if = "Option::is_none")]
     pub usd_balance: Option<f32>,
     #[serde(rename = "balance", skip_serializing_if = "Option::is_none")]
-    pub balance: Option<String>,
+    pub balance: Option<i32>,
     #[serde(rename = "unconfirmed_balance", skip_serializing_if = "Option::is_none")]
-    pub unconfirmed_balance: Option<String>,
+    pub unconfirmed_balance: Option<i32>,
     #[serde(rename = "human_balance", skip_serializing_if = "Option::is_none")]
     pub human_balance: Option<f64>,
     #[serde(rename = "human_unconfirmed_balance", skip_serializing_if = "Option::is_none")]

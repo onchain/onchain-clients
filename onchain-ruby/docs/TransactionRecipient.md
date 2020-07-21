@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **to** | **String** |  | [optional] 
-**amount** | **String** |  | [optional] 
+**amount** | **Integer** |  | [optional] 
 
 ## Code Sample
 

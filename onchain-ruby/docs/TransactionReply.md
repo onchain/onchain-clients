@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tx** | **String** |  | [optional] 
-**total_input_value** | **String** |  | [optional] 
+**total_input_value** | **Integer** |  | [optional] 
 **hashes_to_sign** | [**Array&lt;HashToSign&gt;**](HashToSign.md) |  | [optional] 
 
 ## Code Sample

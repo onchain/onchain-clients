@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **recipients** | [**Array&lt;TransactionRecipient&gt;**](TransactionRecipient.md) |  | [optional] 
 **from** | **String** |  | [optional] 
 **from_address** | **String** |  | [optional] 
-**miners_fee** | **String** |  | [optional] 
+**miners_fee** | **Integer** |  | [optional] 
 
 ## Code Sample
 

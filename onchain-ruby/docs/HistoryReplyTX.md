@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**confirmations** | **String** |  | [optional] 
-**time** | **String** |  | [optional] 
+**confirmations** | **Integer** |  | [optional] 
+**time** | **Integer** |  | [optional] 
 **is_deposit** | **Boolean** |  | [optional] 
 **address** | **String** |  | [optional] 
-**amount** | **String** |  | [optional] 
+**amount** | **Integer** |  | [optional] 
 **human_amount** | **Float** |  | [optional] 
 
 ## Code Sample

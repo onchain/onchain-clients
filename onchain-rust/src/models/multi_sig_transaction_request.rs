@@ -20,9 +20,9 @@ pub struct MultiSigTransactionRequest {
     #[serde(rename = "public_keys", skip_serializing_if = "Option::is_none")]
     pub public_keys: Option<Vec<String>>,
     #[serde(rename = "miners_fee", skip_serializing_if = "Option::is_none")]
-    pub miners_fee: Option<String>,
+    pub miners_fee: Option<i32>,
     #[serde(rename = "number_of_required_signatures", skip_serializing_if = "Option::is_none")]
-    pub number_of_required_signatures: Option<String>,
+    pub number_of_required_signatures: Option<i32>,
 }
 
 impl MultiSigTransactionRequest {

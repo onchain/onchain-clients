@@ -42,8 +42,8 @@ module OnchainApi
         :'to' => :'String',
         :'from' => :'String',
         :'amount' => :'String',
-        :'gas_price' => :'String',
-        :'gas_limit' => :'String'
+        :'gas_price' => :'Integer',
+        :'gas_limit' => :'Integer'
       }
     end
 

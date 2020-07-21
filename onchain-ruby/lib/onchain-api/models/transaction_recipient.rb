@@ -30,7 +30,7 @@ module OnchainApi
     def self.openapi_types
       {
         :'to' => :'String',
-        :'amount' => :'String'
+        :'amount' => :'Integer'
       }
     end
 

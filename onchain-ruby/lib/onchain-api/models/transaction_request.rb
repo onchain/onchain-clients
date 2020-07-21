@@ -42,7 +42,7 @@ module OnchainApi
         :'recipients' => :'Array<TransactionRecipient>',
         :'from' => :'String',
         :'from_address' => :'String',
-        :'miners_fee' => :'String'
+        :'miners_fee' => :'Integer'
       }
     end
 

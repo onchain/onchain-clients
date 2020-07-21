@@ -33,7 +33,7 @@ module OnchainApi
     def self.openapi_types
       {
         :'tx' => :'String',
-        :'total_input_value' => :'String',
+        :'total_input_value' => :'Integer',
         :'hashes_to_sign' => :'Array<HashToSign>'
       }
     end

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tx** | **String** |  | [optional] 
-**v** | **String** |  | [optional] 
+**v** | **Integer** |  | [optional] 
 **r** | **String** |  | [optional] 
 **s** | **String** |  | [optional] 
 

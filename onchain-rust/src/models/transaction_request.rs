@@ -22,7 +22,7 @@ pub struct TransactionRequest {
     #[serde(rename = "from_address", skip_serializing_if = "Option::is_none")]
     pub from_address: Option<String>,
     #[serde(rename = "miners_fee", skip_serializing_if = "Option::is_none")]
-    pub miners_fee: Option<String>,
+    pub miners_fee: Option<i32>,
 }
 
 impl TransactionRequest {

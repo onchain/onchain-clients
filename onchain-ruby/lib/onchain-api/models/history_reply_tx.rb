@@ -41,11 +41,11 @@ module OnchainApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'confirmations' => :'String',
-        :'time' => :'String',
+        :'confirmations' => :'Integer',
+        :'time' => :'Integer',
         :'is_deposit' => :'Boolean',
         :'address' => :'String',
-        :'amount' => :'String',
+        :'amount' => :'Integer',
         :'human_amount' => :'Float'
       }
     end

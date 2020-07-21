@@ -41,8 +41,8 @@ module OnchainApi
         :'coin_type' => :'CoinType',
         :'recipients' => :'Array<TransactionRecipient>',
         :'public_keys' => :'Array<String>',
-        :'miners_fee' => :'String',
-        :'number_of_required_signatures' => :'String'
+        :'miners_fee' => :'Integer',
+        :'number_of_required_signatures' => :'Integer'
       }
     end
 

@@ -36,7 +36,7 @@ module OnchainApi
     def self.openapi_types
       {
         :'tx' => :'String',
-        :'v' => :'String',
+        :'v' => :'Integer',
         :'r' => :'String',
         :'s' => :'String'
       }

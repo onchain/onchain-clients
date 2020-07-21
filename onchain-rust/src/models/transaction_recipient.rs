@@ -16,7 +16,7 @@ pub struct TransactionRecipient {
     #[serde(rename = "to", skip_serializing_if = "Option::is_none")]
     pub to: Option<String>,
     #[serde(rename = "amount", skip_serializing_if = "Option::is_none")]
-    pub amount: Option<String>,
+    pub amount: Option<i32>,
 }
 
 impl TransactionRecipient {

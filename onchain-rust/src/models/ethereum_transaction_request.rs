@@ -21,9 +21,9 @@ pub struct EthereumTransactionRequest {
     #[serde(rename = "amount", skip_serializing_if = "Option::is_none")]
     pub amount: Option<String>,
     #[serde(rename = "gas_price", skip_serializing_if = "Option::is_none")]
-    pub gas_price: Option<String>,
+    pub gas_price: Option<i32>,
     #[serde(rename = "gas_limit", skip_serializing_if = "Option::is_none")]
-    pub gas_limit: Option<String>,
+    pub gas_limit: Option<i32>,
 }
 
 impl EthereumTransactionRequest {

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tx** | Option<**String**> |  | [optional]
-**v** | Option<**String**> |  | [optional]
+**v** | Option<**i32**> |  | [optional]
 **r** | Option<**String**> |  | [optional]
 **s** | Option<**String**> |  | [optional]
 

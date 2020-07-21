@@ -14,7 +14,7 @@
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct HistoryReply {
     #[serde(rename = "total_txs", skip_serializing_if = "Option::is_none")]
-    pub total_txs: Option<String>,
+    pub total_txs: Option<i32>,
     #[serde(rename = "txs", skip_serializing_if = "Option::is_none")]
     pub txs: Option<Vec<crate::models::HistoryReplyTx>>,
 }

@@ -39,8 +39,8 @@ module OnchainApi
     def self.openapi_types
       {
         :'usd_balance' => :'Float',
-        :'balance' => :'String',
-        :'unconfirmed_balance' => :'String',
+        :'balance' => :'Integer',
+        :'unconfirmed_balance' => :'Integer',
         :'human_balance' => :'Float',
         :'human_unconfirmed_balance' => :'Float'
       }

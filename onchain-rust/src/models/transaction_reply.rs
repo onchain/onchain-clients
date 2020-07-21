@@ -16,7 +16,7 @@ pub struct TransactionReply {
     #[serde(rename = "tx", skip_serializing_if = "Option::is_none")]
     pub tx: Option<String>,
     #[serde(rename = "total_input_value", skip_serializing_if = "Option::is_none")]
-    pub total_input_value: Option<String>,
+    pub total_input_value: Option<i32>,
     #[serde(rename = "hashes_to_sign", skip_serializing_if = "Option::is_none")]
     pub hashes_to_sign: Option<Vec<crate::models::HashToSign>>,
 }

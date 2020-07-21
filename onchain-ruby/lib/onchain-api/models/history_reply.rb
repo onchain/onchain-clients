@@ -29,7 +29,7 @@ module OnchainApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'total_txs' => :'String',
+        :'total_txs' => :'Integer',
         :'txs' => :'Array<HistoryReplyTX>'
       }
     end

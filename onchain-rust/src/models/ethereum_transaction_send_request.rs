@@ -16,7 +16,7 @@ pub struct EthereumTransactionSendRequest {
     #[serde(rename = "tx", skip_serializing_if = "Option::is_none")]
     pub tx: Option<String>,
     #[serde(rename = "v", skip_serializing_if = "Option::is_none")]
-    pub v: Option<String>,
+    pub v: Option<i32>,
     #[serde(rename = "r", skip_serializing_if = "Option::is_none")]
     pub r: Option<String>,
     #[serde(rename = "s", skip_serializing_if = "Option::is_none")]

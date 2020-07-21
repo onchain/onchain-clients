@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **to** | Option<**String**> |  | [optional]
 **amount** | Option<**String**> | The amount we wish to send in GWEI. We have to use a string to store this as Ethereum stores amounts in potentially nunbers with 256 bits. | [optional]
-**gas_price** | Option<**String**> |  | [optional]
-**gas_limit** | Option<**String**> |  | [optional]
+**gas_price** | Option<**i32**> |  | [optional]
+**gas_limit** | Option<**i32**> |  | [optional]
 **contract_id** | Option<**String**> |  | [optional]
 **decimal_places** | Option<**i64**> |  | [optional]
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**total_txs** | **String** |  | [optional] 
+**total_txs** | **Integer** |  | [optional] 
 **txs** | [**Array&lt;HistoryReplyTX&gt;**](HistoryReplyTX.md) |  | [optional] 
 
 ## Code Sample

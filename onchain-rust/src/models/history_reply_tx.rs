@@ -14,15 +14,15 @@
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct HistoryReplyTx {
     #[serde(rename = "confirmations", skip_serializing_if = "Option::is_none")]
-    pub confirmations: Option<String>,
+    pub confirmations: Option<i32>,
     #[serde(rename = "time", skip_serializing_if = "Option::is_none")]
-    pub time: Option<String>,
+    pub time: Option<i32>,
     #[serde(rename = "is_deposit", skip_serializing_if = "Option::is_none")]
     pub is_deposit: Option<bool>,
     #[serde(rename = "address", skip_serializing_if = "Option::is_none")]
     pub address: Option<String>,
     #[serde(rename = "amount", skip_serializing_if = "Option::is_none")]
-    pub amount: Option<String>,
+    pub amount: Option<i32>,
     #[serde(rename = "human_amount", skip_serializing_if = "Option::is_none")]
     pub human_amount: Option<f32>,
 }

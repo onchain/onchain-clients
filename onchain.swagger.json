@@ -11,7 +11,9 @@
     }
   },
   "host": "onchain.io",
-  "schemes": ["https"],
+  "schemes": [
+    "https"
+  ],
   "consumes": [
     "application/json"
   ],
@@ -682,12 +684,12 @@
           "format": "float"
         },
         "balance": {
-          "type": "string",
-          "format": "uint64"
+"type": "integer",
+"format": "uint64"
         },
         "unconfirmed_balance": {
-          "type": "string",
-          "format": "uint64"
+"type": "integer",
+"format": "uint64"
         },
         "human_balance": {
           "type": "number",
@@ -707,12 +709,12 @@
           "format": "float"
         },
         "balance": {
-          "type": "string",
-          "format": "uint64"
+"type": "integer",
+"format": "uint64"
         },
         "unconfirmed_balance": {
-          "type": "string",
-          "format": "uint64"
+"type": "integer",
+"format": "uint64"
         },
         "human_balance": {
           "type": "number",
@@ -767,12 +769,12 @@
           "description": "The amount we wish to send in GWEI. We have to use a string to store this as\nEthereum stores amounts in potentially nunbers with 256 bits."
         },
         "gas_price": {
-          "type": "string",
-          "format": "uint64"
+"type": "integer",
+"format": "uint64"
         },
         "gas_limit": {
-          "type": "string",
-          "format": "uint64"
+"type": "integer",
+"format": "uint64"
         },
         "contract_id": {
           "type": "string"
@@ -812,12 +814,12 @@
           "description": "The amount we wish to send in GWEI. We have to use a string to store this as\nEthereum stores amounts in potentially nunbers with 256 bits."
         },
         "gas_price": {
-          "type": "string",
-          "format": "uint64"
+"type": "integer",
+"format": "uint64"
         },
         "gas_limit": {
-          "type": "string",
-          "format": "uint64"
+"type": "integer",
+"format": "uint64"
         }
       }
     },
@@ -829,8 +831,8 @@
           "format": "byte"
         },
         "v": {
-          "type": "string",
-          "format": "uint64"
+"type": "integer",
+"format": "uint64"
         },
         "r": {
           "type": "string",
@@ -867,8 +869,8 @@
       "type": "object",
       "properties": {
         "total_txs": {
-          "type": "string",
-          "format": "uint64"
+"type": "integer",
+"format": "uint64"
         },
         "txs": {
           "type": "array",
@@ -882,12 +884,12 @@
       "type": "object",
       "properties": {
         "confirmations": {
-          "type": "string",
-          "format": "uint64"
+"type": "integer",
+"format": "uint64"
         },
         "time": {
-          "type": "string",
-          "format": "uint64"
+"type": "integer",
+"format": "uint64"
         },
         "is_deposit": {
           "type": "boolean",
@@ -897,8 +899,8 @@
           "type": "string"
         },
         "amount": {
-          "type": "string",
-          "format": "uint64"
+"type": "integer",
+"format": "uint64"
         },
         "human_amount": {
           "type": "number",
@@ -927,12 +929,12 @@
           "title": "The from address is supplied as the full public key that corresponds to\nthe ECDCA private key.\ne.g. 03df154ebfcf29d29cc10d5c2565018bce2d9edbab267c31d2caf44a63056cf99f"
         },
         "miners_fee": {
-          "type": "string",
-          "format": "uint64"
+"type": "integer",
+"format": "uint64"
         },
         "number_of_required_signatures": {
-          "type": "string",
-          "format": "uint64"
+"type": "integer",
+"format": "uint64"
         }
       }
     },
@@ -956,8 +958,8 @@
           "title": "To address as a string in the network format. e.g. 1QJVDzdqb1VpbDK7uDeyVXy9mR27CJiyhY"
         },
         "amount": {
-          "type": "string",
-          "format": "uint64"
+"type": "integer",
+"format": "uint64"
         }
       }
     },
@@ -969,8 +971,8 @@
           "format": "byte"
         },
         "total_input_value": {
-          "type": "string",
-          "format": "uint64"
+"type": "integer",
+"format": "uint64"
         },
         "hashes_to_sign": {
           "type": "array",
@@ -1001,8 +1003,8 @@
           "type": "string"
         },
         "miners_fee": {
-          "type": "string",
-          "format": "uint64"
+"type": "integer",
+"format": "uint64"
         }
       }
     },
