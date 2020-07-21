@@ -126,7 +126,7 @@ module OnchainApi
     attr_accessor :force_ending_format
 
     def initialize
-      @scheme = 'http'
+      @scheme = 'https'
       @host = 'onchain.io'
       @base_path = ''
       @api_key = {}
@@ -207,7 +207,7 @@ module OnchainApi
     def server_settings
       [
         {
-          url: "//onchain.io/",
+          url: "https://onchain.io/",
           description: "No description provided",
         }
       ]

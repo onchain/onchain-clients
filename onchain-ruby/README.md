@@ -81,7 +81,7 @@ end
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://onchain.io*
+All URIs are relative to *https://onchain.io*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------

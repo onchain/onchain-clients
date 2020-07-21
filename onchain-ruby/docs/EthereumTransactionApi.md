@@ -1,6 +1,6 @@
 # OnchainApi::EthereumTransactionApi
 
-All URIs are relative to *http://onchain.io*
+All URIs are relative to *https://onchain.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
