@@ -35,7 +35,8 @@ Class | Method | HTTP request | Description
 *EthereumTransactionApi* | [**sign_and_send**](docs/EthereumTransactionApi.md#sign_and_send) | **post** /api/ethereum/sign_and_send | 
 *MultiSigTransactionApi* | [**create_transaction**](docs/MultiSigTransactionApi.md#create_transaction) | **post** /api/multi_sig/create/{coin_type} | 
 *MultiSigTransactionApi* | [**sign_and_send**](docs/MultiSigTransactionApi.md#sign_and_send) | **post** /api/multi_sig/sign_and_send/{coin_type} | 
-*TransactionApi* | [**create_transaction**](docs/TransactionApi.md#create_transaction) | **post** /api/transaction/create/{coin_type} | 
+*TransactionApi* | [**create_payment**](docs/TransactionApi.md#create_payment) | **post** /api/payment/create/{coin_type} | Carbon wallet requires multiple source addresses.
+*TransactionApi* | [**create_transaction**](docs/TransactionApi.md#create_transaction) | **post** /api/transaction/create/{coin_type} | Similar to create payment but allows only one source address.
 *TransactionApi* | [**send_raw**](docs/TransactionApi.md#send_raw) | **post** /api/transaction/send_raw/{coin_type} | 
 *TransactionApi* | [**sign_and_send**](docs/TransactionApi.md#sign_and_send) | **post** /api/transaction/sign_and_send/{coin_type} | 
 
@@ -57,12 +58,14 @@ Class | Method | HTTP request | Description
  - [HistoryReply](docs/HistoryReply.md)
  - [HistoryReplyTx](docs/HistoryReplyTx.md)
  - [MultiSigTransactionRequest](docs/MultiSigTransactionRequest.md)
+ - [PaymentRequest](docs/PaymentRequest.md)
  - [RawTransactionSendRequest](docs/RawTransactionSendRequest.md)
  - [TransactionRecipient](docs/TransactionRecipient.md)
  - [TransactionReply](docs/TransactionReply.md)
  - [TransactionRequest](docs/TransactionRequest.md)
  - [TransactionSendReply](docs/TransactionSendReply.md)
  - [TransactionSendRequest](docs/TransactionSendRequest.md)
+ - [TransactionSource](docs/TransactionSource.md)
 
 
 To get access to the crate's generated documentation, use:

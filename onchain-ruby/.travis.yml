@@ -8,4 +8,4 @@ script:
   - bundle install --path vendor/bundle
   - bundle exec rspec
   - gem build onchain-api.gemspec
-  - gem install ./onchain-api-1.1.7.gem
+  - gem install ./onchain-api-1.1.8.gem

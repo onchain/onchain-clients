@@ -19,6 +19,14 @@ use crate::apis::ResponseContent;
 use super::{Error, configuration};
 
 
+/// struct for typed errors of method `create_payment`
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum CreatePaymentError {
+    DefaultResponse(crate::models::GrpcGatewayRuntimeError),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method `create_transaction`
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -43,6 +51,40 @@ pub enum SignAndSendError {
     UnknownValue(serde_json::Value),
 }
 
+
+    pub async fn create_payment(configuration: &configuration::Configuration, coin_type: &str, body: crate::models::PaymentRequest) -> Result<crate::models::TransactionReply, Error<CreatePaymentError>> {
+        let client = &configuration.client;
+
+        let uri_str = format!("{}/api/payment/create/{coin_type}", configuration.base_path, coin_type=crate::apis::urlencode(coin_type));
+        let mut req_builder = client.post(uri_str.as_str());
+
+        if let Some(ref user_agent) = configuration.user_agent {
+            req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+        }
+        if let Some(ref apikey) = configuration.api_key {
+            let key = apikey.key.clone();
+            let val = match apikey.prefix {
+                Some(ref prefix) => format!("{} {}", prefix, key),
+                None => key,
+            };
+            req_builder = req_builder.header("X-API-KEY", val);
+        };
+        req_builder = req_builder.json(&body);
+
+        let req = req_builder.build()?;
+        let resp = client.execute(req).await?;
+
+        let status = resp.status();
+        let content = resp.text().await?;
+
+        if status.is_success() {
+            serde_json::from_str(&content).map_err(Error::from)
+        } else {
+            let entity: Option<CreatePaymentError> = serde_json::from_str(&content).ok();
+            let error = ResponseContent { status, content, entity };
+            Err(Error::ResponseError(error))
+        }
+    }
 
     pub async fn create_transaction(configuration: &configuration::Configuration, coin_type: &str, body: crate::models::TransactionRequest) -> Result<crate::models::TransactionReply, Error<CreateTransactionError>> {
         let client = &configuration.client;

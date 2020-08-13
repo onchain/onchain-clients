@@ -471,8 +471,62 @@
         ]
       }
     },
+    "/api/payment/create/{coin_type}": {
+      "post": {
+        "summary": "Carbon wallet requires multiple source addresses.",
+        "operationId": "CreatePayment",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/onchain.TransactionReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/grpc.gateway.runtime.Error"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "coin_type",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "BITCOIN",
+              "ETHEREUM",
+              "TESTNET3",
+              "BITCOIN_CASH",
+              "BITCOIN_GOLD",
+              "LITECOIN",
+              "DASH",
+              "DOGE",
+              "BITCOIN_PRIVATE",
+              "ZCASH",
+              "ZCASH_TESTNET",
+              "ZCLASSIC"
+            ]
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/onchain.PaymentRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Transaction"
+        ]
+      }
+    },
     "/api/transaction/create/{coin_type}": {
       "post": {
+        "summary": "Similar to create payment but allows only one source address.",
         "operationId": "CreateTransaction",
         "responses": {
           "200": {
@@ -938,6 +992,31 @@
         }
       }
     },
+    "onchain.PaymentRequest": {
+      "type": "object",
+      "properties": {
+        "coin_type": {
+          "$ref": "#/definitions/onchain.CoinType"
+        },
+        "recipients": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/onchain.TransactionRecipient"
+          }
+        },
+        "from": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/onchain.TransactionSource"
+          },
+          "title": "The from address is supplied as the full public key that corresponds to\nthe ECDCA private key.\ne.g. 03df154ebfcf29d29cc10d5c2565018bce2d9edbab267c31d2caf44a63056cf99f"
+        },
+        "miners_fee": {
+"type": "integer",
+"format": "uint64"
+        }
+      }
+    },
     "onchain.RawTransactionSendRequest": {
       "type": "object",
       "properties": {
@@ -1034,6 +1113,21 @@
           }
         }
       }
+    },
+    "onchain.TransactionSource": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "type": "string",
+          "format": "byte",
+          "title": "The from address is supplied as the full public key that corresponds to\nthe ECDCA private key.\ne.g. 03df154ebfcf29d29cc10d5c2565018bce2d9edbab267c31d2caf44a63056cf99f"
+        },
+        "from_address": {
+          "type": "string",
+          "title": "Alternatively supply the network address of the originator \ni.e. 17oeQ8jTUbEaiToVvQT22vPkqrCQDoYUKE"
+        }
+      },
+      "description": "Allo users to create payments from multiple source addresses."
     }
   },
   "securityDefinitions": {

@@ -24,6 +24,7 @@ docs/HistoryReply.md
 docs/HistoryReplyTX.md
 docs/MultiSigTransactionApi.md
 docs/MultiSigTransactionRequest.md
+docs/PaymentRequest.md
 docs/RawTransactionSendRequest.md
 docs/TransactionApi.md
 docs/TransactionRecipient.md
@@ -31,6 +32,7 @@ docs/TransactionReply.md
 docs/TransactionRequest.md
 docs/TransactionSendReply.md
 docs/TransactionSendRequest.md
+docs/TransactionSource.md
 git_push.sh
 lib/onchain-api.rb
 lib/onchain-api/api/address_api.rb
@@ -57,12 +59,14 @@ lib/onchain-api/models/hash_to_sign.rb
 lib/onchain-api/models/history_reply.rb
 lib/onchain-api/models/history_reply_tx.rb
 lib/onchain-api/models/multi_sig_transaction_request.rb
+lib/onchain-api/models/payment_request.rb
 lib/onchain-api/models/raw_transaction_send_request.rb
 lib/onchain-api/models/transaction_recipient.rb
 lib/onchain-api/models/transaction_reply.rb
 lib/onchain-api/models/transaction_request.rb
 lib/onchain-api/models/transaction_send_reply.rb
 lib/onchain-api/models/transaction_send_request.rb
+lib/onchain-api/models/transaction_source.rb
 lib/onchain-api/version.rb
 onchain-api.gemspec
 spec/api_client_spec.rb

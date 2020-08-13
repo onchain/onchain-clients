@@ -1,6 +1,6 @@
 {
     "modelPackage" : "onchain",
     "apiPackage" : "onchain",
-    "gemVersion": "1.1.7",
+    "gemVersion": "1.1.8",
     "gemName": "onchain-api"
 }

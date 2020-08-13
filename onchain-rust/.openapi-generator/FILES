@@ -21,6 +21,7 @@ docs/HistoryReply.md
 docs/HistoryReplyTx.md
 docs/MultiSigTransactionApi.md
 docs/MultiSigTransactionRequest.md
+docs/PaymentRequest.md
 docs/RawTransactionSendRequest.md
 docs/TransactionApi.md
 docs/TransactionRecipient.md
@@ -28,6 +29,7 @@ docs/TransactionReply.md
 docs/TransactionRequest.md
 docs/TransactionSendReply.md
 docs/TransactionSendRequest.md
+docs/TransactionSource.md
 git_push.sh
 src/apis/address_api.rs
 src/apis/configuration.rs
@@ -53,9 +55,11 @@ src/models/history_reply.rs
 src/models/history_reply_tx.rs
 src/models/mod.rs
 src/models/multi_sig_transaction_request.rs
+src/models/payment_request.rs
 src/models/raw_transaction_send_request.rs
 src/models/transaction_recipient.rs
 src/models/transaction_reply.rs
 src/models/transaction_request.rs
 src/models/transaction_send_reply.rs
 src/models/transaction_send_request.rs
+src/models/transaction_source.rs
